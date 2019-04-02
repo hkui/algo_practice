@@ -7,5 +7,6 @@
         * 2.1 缓存未满，将次节点直接插入到链表的头部
         * 2.2 已经满了，删除链表尾部节点，将新的数据节点插入到链表的头部
 
-single_list_lru.c
+[single_list_lru.c](https://github.com/hkui/algo_practice/blob/master/c/linklist/single_list_lru.c)
+
 ![](https://note.youdao.com/yws/api/personal/file/20C6E684C8E843CA9F3C33EB00A4F49F?method=download&shareKey=0859508c70eba48e40fc3adfe85cb51e)

@@ -3,7 +3,7 @@ Success belongs to the persevering!
 
 ##### C语言
 * 链表
-- [ ] LRU单链表实现
+- [x] [LRU单链表实现](https://github.com/hkui/algo_practice/blob/master/md/c/linklist/%E5%8D%95%E9%93%BE%E8%A1%A8LRU.md)
 - [ ] 字符串是否是回文字符串
 - [ ] 单链表反转
 - [ ] 链表中环的检测
