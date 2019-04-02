@@ -33,6 +33,7 @@ typedef struct
 int insert(stuNode * head,int no,log *llog){
 
 	if(llog->used>=llog->size){
+		printf("no=%d  -------------fulled \n",no );
 		return -1;
 	}
 	stuNode *newNode=malloc(sizeof(stuNode));
@@ -44,30 +45,28 @@ int insert(stuNode * head,int no,log *llog){
 	int flag_delete_insert=0;
 
 	while(cur!=NULL){
-		if(no<cur->no){
-			flag_insert=1;
+		if(no < cur->no){
 			break;
-		}else if(no==cur->no){
+		}else if(no == cur->no){
 			flag_delete_insert=1;
 			break;
 		}
 		prev=cur;
 		cur=cur->next;
 	}
-	//插入
-	if(flag_insert==1){
+	
+	//删除老节点，把新的插入到表头
+	if(flag_delete_insert == 1){
+		prev->next=cur->next;
+		newNode->next=head->next;
+		head->next=newNode;
+	}else{
 		llog->used+=sizeof(stuNode);
 		prev->next=newNode;
 		newNode->next=cur;
 	}
-	//删除老节点，把新的插入到表头
-	else if(flag_delete_insert == 1){
-		prev->next=cur->next;
-		newNode->next=head->next;
-		head->next=newNode;
-	}
 	
-	printf("no=%d,remain=%d\n",no,llog->size-llog->used);
+	printf("inserted no=%d,remain=%d\n",no,llog->size-llog->used);
 
 }
 
@@ -114,12 +113,20 @@ int main(int argc, char const *argv[])
 {
 	//链表大小信息
 	log llog={sizeof(stuNode)*LEN,0};
+	printf("all_size=%d\n", sizeof(stuNode)*LEN);
 	stuNode head={0,NULL};
 	insert(&head,5,&llog);
 	insert(&head,4,&llog);
 	insert(&head,3,&llog);
 	insert(&head,1,&llog);
 	insert(&head,2,&llog);
+	insert(&head,9,&llog);
+	insert(&head,10,&llog);
+	insert(&head,8,&llog);
+	insert(&head,6,&llog);
+	insert(&head,7,&llog);
+	insert(&head,11,&llog);
+	insert(&head,18,&llog);
 	
 	
 	printStu(&head);
