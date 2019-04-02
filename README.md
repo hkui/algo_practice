@@ -1,5 +1,16 @@
 ### 数据结构和算法练习      
-Success belongs to the persevering!
+Success belongs to the persevering! 
+
+##### C语言
+* 链表
+- [ ] LRU单链表实现
+- [ ] 字符串是否是回文字符串
+- [ ] 单链表反转
+- [ ] 链表中环的检测
+- [ ] 两个有序链表的合并
+- [ ] 删除链表倒数第N个节点
+- [ ] 求链表的中间节点
+##### PHP
 
 
 
