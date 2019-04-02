@@ -31,17 +31,8 @@ typedef struct
 
 //插入(并维持链表有序)
 int insert(stuNode * head,int no,log *llog){
-
-	if(llog->used>=llog->size){
-		printf("no=%d  -------------fulled \n",no );
-		return -1;
-	}
-	stuNode *newNode=malloc(sizeof(stuNode));
-	newNode->no=no;
-
 	stuNode *prev,*cur;
 	cur=head;
-	int flag_insert=0;
 	int flag_delete_insert=0;
 
 	while(cur!=NULL){
@@ -54,20 +45,23 @@ int insert(stuNode * head,int no,log *llog){
 		prev=cur;
 		cur=cur->next;
 	}
-	
+	stuNode *newNode=malloc(sizeof(stuNode));
+	newNode->no=no;
 	//删除老节点，把新的插入到表头
 	if(flag_delete_insert == 1){
 		prev->next=cur->next;
 		newNode->next=head->next;
 		head->next=newNode;
 	}else{
+		if(llog->used>=llog->size){
+			printf("no=%d  -------------fulled \n",no );
+			free(newNode);
+			return -1;
+		}
 		llog->used+=sizeof(stuNode);
 		prev->next=newNode;
 		newNode->next=cur;
 	}
-	
-	printf("inserted no=%d,remain=%d\n",no,llog->size-llog->used);
-
 }
 
 
@@ -97,16 +91,9 @@ void *delStu(stuNode *node,int n){
 		puts("节点不存在");
 	}
 }
-int findStu(stuNode *node,int no){
-	int i=0;
-	while(node!=NULL){
-		if(node->no == no){
-			return i;
-		}
-		node=node->next;
-		i++;
-	}
-	return -1;
+
+int lru(stuNode *head,int no){
+
 }
 
 int main(int argc, char const *argv[])
@@ -124,12 +111,20 @@ int main(int argc, char const *argv[])
 	insert(&head,10,&llog);
 	insert(&head,8,&llog);
 	insert(&head,6,&llog);
-	insert(&head,7,&llog);
-	insert(&head,11,&llog);
-	insert(&head,18,&llog);
-	
-	
 	printStu(&head);
+
+	//以上是生成有序链表
+
+	//下面访问有序链表
+	/*
+	 1.如果此数据之前已经被缓存在链表中，遍历得到这个数据对应的节点，并将其从原来的位置删除，然后再插入到链表的头部
+ 	 2.没在缓存链表里
+    2.1 缓存未满，将次节点直接插入到链表的头部
+    2.2 已经满了，删除链表尾部节点，将新的数据节点插入到链表的头部
+  */
+	
+	
+	
 
 
 
