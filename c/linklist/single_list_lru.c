@@ -28,17 +28,17 @@ typedef struct {
     int used;
 } log;
 
-//插入(并维持链表有序)
+//插入创建有序的链表
 int insert(stuNode *head, int no, log *llog) {
+    if (llog->used >= llog->size) {
+        printf("no=%d  -------------fulled \n", no);
+        return -1;
+    }
     stuNode *prev, *cur;
     cur = head;
-    int flag_delete_insert = 0;
-
+    //查找第一个比no大的节点，在这个节点之前插入
     while (cur != NULL) {
         if (no < cur->no) {
-            break;
-        } else if (no == cur->no) {
-            flag_delete_insert = 1;
             break;
         }
         prev = cur;
@@ -46,48 +46,25 @@ int insert(stuNode *head, int no, log *llog) {
     }
     stuNode *newNode = malloc(sizeof(stuNode));
     newNode->no = no;
-    //删除老节点，把新的插入到表头
-    if (flag_delete_insert == 1) {
-        prev->next = cur->next;
-        newNode->next = head->next;
-        head->next = newNode;
-    } else {
-        if (llog->used >= llog->size) {
-            printf("no=%d  -------------fulled \n", no);
-            free(newNode);
-            return -1;
-        }
-        llog->used += sizeof(stuNode);
-        prev->next = newNode;
-        newNode->next = cur;
-    }
+
+    llog->used += sizeof(stuNode);
+    prev->next = newNode;
+    newNode->next = cur;
+    
 }
 
 
-//循环遍历链表
-void *varDump(stuNode *node) {
+//循环遍历链表 字符串格式输出，方便观看
+void varDump(stuNode *node) {
+    char str[100]={0};
+    char *strno;
     while (node->next != NULL) {
-        printf("%d\n", node->next->no);
+        bzero(strno,sizeof(strno));
+        sprintf(strno,"%d ",node->next->no);
+        strcat(str,strno);
         node = node->next;
     }
-}
-//删除第n个节点
-void *delStu(stuNode *node, int n) {
-    int i = 0;
-    stuNode *beforeNode;
-    for (; i < n; node != NULL) {
-        beforeNode = node;
-        node = node->next;
-        i++;
-    }
-    if (node != NULL) {
-        if (node->next != NULL) {
-            beforeNode->next = node->next;
-        }
-        free(node);
-    } else {
-        puts("节点不存在");
-    }
+    printf("%s\n", str);
 }
 
 /*
@@ -98,15 +75,13 @@ void *delStu(stuNode *node, int n) {
  */
 
 
-int lru(stuNode *head, int no,log *llog) {
+void lru(stuNode *head, int no,log *llog) {
     stuNode *prev, *cur;
     cur = head;
     int flag_delete_insert = 0;
 
     while (cur != NULL) {
-        if (no < cur->no) {
-            break;
-        } else if (no == cur->no) {
+        if (no == cur->no) {
             flag_delete_insert = 1;
             break;
         }
@@ -121,15 +96,18 @@ int lru(stuNode *head, int no,log *llog) {
         newNode->next = head->next;
         head->next = newNode;
     } else {
+        //没在链表里，分2种情况
+        //1.缓存已经满了，删除尾部节点，将新的插入到链表的头部
         if (llog->used >= llog->size) {
             printf("no=%d  -------------fulled \n", no);
-            free(newNode);
-            return -1;
+            free(prev->next);
+        }else{
+            //2/缓存未满，新节点插入到链表的头部
+            newNode->next=head->next;
+            head->next=newNode;
+            llog->used += sizeof(stuNode);
         }
-        //未满，把
-        llog->used += sizeof(stuNode);
-        prev->next = newNode;
-        newNode->next = cur;
+        
     }
 }
 
@@ -138,32 +116,25 @@ int main(int argc, char const *argv[]) {
     log llog = {sizeof(stuNode) * LEN, 0};
     printf("all_size=%d\n", sizeof(stuNode) * LEN);
     stuNode head = {0, NULL};
+    int no;
+    int i;
+    printf("please input %d num\n",LEN-2 );
+    for(i=0;i<LEN-2;i++){
+        scanf("%d",&no);
+        insert(&head, no, &llog);
+    }
+    printf("dump---------------\n");
 
-    insert(&head, 5, &llog);
-    insert(&head, 4, &llog);
-    insert(&head, 3, &llog);
-    insert(&head, 1, &llog);
-    insert(&head, 2, &llog);
-    insert(&head, 9, &llog);
-    insert(&head, 10, &llog);
-    insert(&head, 8, &llog);
-    insert(&head, 6, &llog);
-    insert(&head, 3, &llog);
     varDump(&head);
-
-    //以上是生成有序链表
-
-    //下面访问有序链表
-
-
-
-
-
-
-
-
-
-
+    printf("---------lru----------\n");
+    int getno;
+    for(i=0;i<5;i++){
+        printf("please input a num for lru\n");
+        scanf("%d",&getno);
+        lru(&head,getno,&llog);
+        printf("--------dump---------------\n");
+        varDump(&head);
+    }
     return 0;
 }
 
