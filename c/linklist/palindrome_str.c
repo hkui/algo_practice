@@ -2,13 +2,16 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 typedef struct str_node{
 	char c;
 	struct str_node *next;
-
 } strnode;
 
-int isPalindrome(char * str,int len){
+void dump(strnode * head);
+
+
+void * createSingleLink (char *str,int len){
 	int i=0;
 	strnode *head,*cur;
 	head=malloc(sizeof(strnode));
@@ -16,12 +19,15 @@ int isPalindrome(char * str,int len){
 
 	for(;i<len;i++){
 		strnode * node=malloc(sizeof(strnode));
+		node->c=str[i];
 		cur->next=node;
+		cur=cur->next;
 	}
-
-
-	return 0;
-
+	strnode *ret[2];
+	ret[0]=head;
+	ret[1]=cur;
+	
+	return (void *) ret;
 }
 void dump(strnode * head){
 	strnode *cur;
@@ -32,16 +38,28 @@ void dump(strnode * head){
 
 	}
 }
+int isPalindrome(strnode *head_end[2]){
+	strnode *head=head_end[0];
+	strnode *end=head_end[1];
+	dump(head);
+	return 0;
+}
 
 int main(int argc, char const *argv[])
 {
 	char str[10]="";
 	int len=0;
-
 	scanf("%s",str);
 	len=strlen(str);
-	
 	printf("str=%s,len=%d\n",str,len);
+	strnode *p,*p1;
+
+	p=(strnode *) createSingleLink(str,len);
+	p1=p+1;
+	dump(p);
+
+
+	
 
 	return 0;
 }
