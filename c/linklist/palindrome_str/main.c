@@ -12,3 +12,4 @@ int main(int argc, char const *argv[])
 	printf("%s isPalind=%d\n",str,isPalind );
 	return 0;
 }
+// gcc main.c palindrome_str.c
