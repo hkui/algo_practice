@@ -1,18 +1,6 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "link_common.h"
+#include "palindrome_str.h"
 
-typedef struct str_node{
-	char c;
-	struct str_node *next;
-} strnode;
-
-
-
-
-
-
+//判断是否是回文数
 int isPalindrome(strnode *head){
 	strnode *slow,*quick,*prev,*next;
 	slow=head->next;
@@ -57,16 +45,25 @@ int isPalindrome(strnode *head){
 	}
 	return 1;
 }
-
-int main(int argc, char const *argv[])
-{
-	char str[10]="";
-	int len=0;
-	scanf("%s",str);
-	len=strlen(str);
-	//printf("str=%s,len=%d\n",str,len);
-	strnode *head=createSingleLink(str,len);
-	int isPalind=isPalindrome(head);
-	printf("%s isPalind=%d\n",str,isPalind );
-	return 0;
+void dump(strnode * head){
+	strnode *cur;
+	cur=head->next;
+	while(cur!=NULL){
+		cur=cur->next;
+	}
+}
+//根据字符串创建单链表
+strnode * createSingleLink (char *str,int len){
+	int i=0;
+	strnode *head,*cur;
+	head=malloc(sizeof(strnode));
+	cur=head;
+	for(;i<len;i++){
+		strnode * node=malloc(sizeof(strnode));
+		node->c=str[i];
+		cur->next=node;
+		cur=cur->next;
+	}
+	return head;
+	
 }
