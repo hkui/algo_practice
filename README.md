@@ -7,7 +7,7 @@ Success belongs to the persevering!
 - [x] [单链表反转](https://github.com/hkui/algo_practice/blob/master/c/linklist/reverse_single_list.c)
 - [x] [求链表的中间节点](https://github.com/hkui/algo_practice/blob/master/c/linklist/findMiddle.c)
 - [x] [单链表字符串是否是回文串](https://github.com/hkui/algo_practice/tree/master/c/linklist/palindrome_str)
-- [ ] 链表中环的检测
+- [ ] 链表中的环问题
 - [ ] 两个有序链表的合并
 - [ ] 删除链表倒数第N个节点
 
