@@ -15,33 +15,33 @@ void * printNode(Node * node ){
         node=node->next;
     }
 }
-//删除倒数第n个节点
 
 
-/**
+
+/**删除倒数第n个节点
  * 只允许遍历一次，且n一直有效，可以利用双指针解法（前指针、后指针），让前指针先走n步，
  * 再让两个在指针同时后移，直到前指针到达尾部，此时，后指针的下一个节点就是要被删除的节点了
  * @param head
  * @param n
  */
 void delReciprocalN(Node *head,int n){
-    Node *cur=head->next;
+    Node *cur=head;
     Node *p1,*p2;
-    p1=cur;
-    p2=cur;
+    p1=head;
+    p2=head;
     int i=0;
-    while (i<=n){
+    //前指针先移动n位
+    while (i<n && p1){
         p1=p1->next;
         i++;
     }
-    while(p1 && p2){
+    //前指针到达末尾不再移动，后指针到达倒数第n+1位
+    while(p1&& p1->next && p2){
         p1=p1->next;
         p2=p2->next;
     }
-    printf("------------\n");
+    
     p2->next=p2->next->next;
-    printNode(head);
-
 
 }
 
@@ -62,10 +62,9 @@ int main(int argc, char const *argv[])
 	n5.next=&n6;
 
 	printNode(&head);
-	delReciprocalN(&head,2);
-
-
-
+    printf("------------\n");
+	delReciprocalN(&head,6);
+    printNode(&head);
 
 
 	return 0;
