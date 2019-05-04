@@ -72,6 +72,7 @@ void arrayStackDump(stArrayStack *pstArrayStack){
 	}
 }
 
+//自动扩容
 int arrayStackNew(stArrayStack *pstArrayStack,int data){
 	int *intnew=NULL;
 	if(!stArrayStackIsFull(pstArrayStack)){
@@ -110,8 +111,7 @@ int main(int argc, char const *argv[])
 	arrayStackNew(pstArrayStack,10);
 
 	arrayStackDump(pstArrayStack);
-	// arrayStackPush(pstArrayStack,2);
-	// arrayStackPush(pstArrayStack,2);
+	arrayStackDestory(pstArrayStack);
 
 	return 0;
 }
