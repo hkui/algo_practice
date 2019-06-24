@@ -63,11 +63,13 @@ void arrayStackDestory(stArrayStack *pstArrayStack){
 	free(pstArrayStack);
 	return;
 }
+//遍历打印
 void arrayStackDump(stArrayStack *pstArrayStack){
 	if(stArrayStackIsEmpty(pstArrayStack)){
 		return;
 	}
-	for(int i=0;i<=pstArrayStack->pos;i++){
+	int i=0;
+	for(;i<=pstArrayStack->pos;i++){
 		printf("pstArrayStack->array[%d]=%d\n",i,pstArrayStack->array[i] );
 	}
 }
@@ -90,8 +92,6 @@ int arrayStackNew(stArrayStack *pstArrayStack,int data){
 	pstArrayStack->pos++;
 	pstArrayStack->array[pstArrayStack->pos]=data;
 	return 0;
-
-
 
 
 }
