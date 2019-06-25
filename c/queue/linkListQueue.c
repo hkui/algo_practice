@@ -31,7 +31,7 @@ listQueue *createListQueue(){
 
 //入列
 int listQueueEnqueue(listQueue *q,int data){
-    queueNode *qnode=malloc(sizeof(queueNode));
+    queueNode *qnode=(queueNode *)malloc(sizeof(queueNode));
     if(qnode==NULL){
         return -1;
     }
@@ -50,32 +50,47 @@ int listQueueEnqueue(listQueue *q,int data){
 //出队列
 int listQueueDequeue(listQueue *q){
     if (q->num == 0) return -1;
-
     int item=q->head->data;
     q->head=q->head->next;
+    if(q->head==NULL){
+        q->tail=NULL;
+    }
     q->num=q->num-1;
     return item;
 }
 void listQueueDump(listQueue *q){
     if (q->num ==0) return;
-    while(q->head!=NULL){
-        printf("%d\n",q->head->data);
-        q->head=q->head->next;
-
+    queueNode *nowNode=q->head;
+    while(nowNode!=NULL){
+        printf("%d  ",nowNode->data);
+        nowNode=nowNode->next;
     }
+     printf("\n");
 }
-
 
 int main(){
     listQueue *q=createListQueue();
+
     listQueueEnqueue(q,1);
     listQueueEnqueue(q,3);
     listQueueEnqueue(q,7);
     listQueueEnqueue(q,5);
     listQueueEnqueue(q,4);
     listQueueDump(q);
+    printf("###############\n");
 
     printf("%d\n",listQueueDequeue(q));
+    printf("%d\n",listQueueDequeue(q));
+    printf("%d\n",listQueueDequeue(q));
+    printf("%d\n",listQueueDequeue(q));
+    printf("%d\n",listQueueDequeue(q));
+    printf("%d\n",listQueueDequeue(q));
+    printf("q->tail=%p\n",q->tail);
+    listQueueEnqueue(q,14);
+    listQueueEnqueue(q,40);
+    printf("###############\n");
+    listQueueDump(q);
+
     return 0;
 
 }
