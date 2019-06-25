@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+//基于数组的队列实现
 typedef struct {
     int size;
     int head,tail;
