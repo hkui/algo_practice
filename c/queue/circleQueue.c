@@ -41,17 +41,15 @@ void dump(circleQueue *queue){
     if(queue->used==0){
         return ;
     }
-    circleQueue *tmpq=(circleQueue *)malloc(sizeof(queue));
-    tmpq=queue;
+    printf("--DUMP-------\n");
     int i=0;
+    int index=0;
     while (i<queue->used){
-        int item=tmpq->array[tmpq->head];
-        printf("%d ",item);
-        tmpq->head=(tmpq->head+1)%queue->size;
+        index=(queue->head+i)%queue->size;
+        printf("%d ",queue->array[index]);
         i++;
     }
-//    free(tmpq);
-    printf("\n###############\n");
+    printf("\n");
 }
 
 
@@ -67,6 +65,8 @@ int main(){
     printf("%d \n",dequeue(queue));
     printf("%d \n",dequeue(queue));
     printf("%d \n",dequeue(queue));
+    enqueue(queue,13);
+    dump(queue);
 
 
     return 0;
