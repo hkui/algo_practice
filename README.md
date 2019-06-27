@@ -15,9 +15,9 @@ Success belongs to the persevering!
 - [x] [链表链式栈](https://github.com/hkui/algo_practice/blob/master/c/stack/linkListStack.c)
 
 * 队列
-- [ ] 数组实现顺序队列
-- [ ] 链表实现一个链式队列
-- [ ] 循环队列
+- [x] [数组实现顺序队列](https://github.com/hkui/algo_practice/blob/master/c/queue/arrayQueue.c)
+- [x] [链表实现一个链式队列](https://github.com/hkui/algo_practice/blob/master/c/queue/linkListQueue.c)
+- [x] [循环队列](https://github.com/hkui/algo_practice/blob/master/c/queue/circleQueue.c)
 
 ##### PHP
 
