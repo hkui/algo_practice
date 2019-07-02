@@ -1,19 +1,50 @@
 //归并排序
 
 #include <stdio.h>
-//总的归并排序
-void mergeSort(int  arr[],int size){
-    int i=0;
-    int mid=(i+size)%2;
-    mergeSort_(i,mid);
-    mergeSort_(mid+1,size-1);
-    merge();
+#include <stdlib.h>
 
-}
 
 //合并两个有序数组 --并
-merge(){
+merge(int arr[],int p,int q){
+    if(p ==q) return;
+    int mid=(p+q)/2;
+    printf("p=%d,q=%d\n");
+    int len=q-p+1;
 
+    int *tmpArr=(int *)malloc(len*sizeof(int));
+    int i=p,j=mid+1;
+    int index=0;
+    while(i<=mid&& j<=q ){
+        if(arr[i]<arr[j]){
+            tmpArr[index]=arr[i];
+            i++;
+            index++;
+        }else if(arr[i]>arr[j]){
+            tmpArr[index]=arr[j];
+            j++;
+            index++;
+        }else{
+            tmpArr[index]=arr[i];
+            index++;
+            tmpArr[index]=arr[j];
+            index++;
+            i++;
+            j++;
+        }
+    }
+    while(i<=mid){
+        tmpArr[index++]=arr[i];
+
+        i++;
+    }
+    while(j<=mid){
+        tmpArr[index++]=arr[j];
+        j++;
+    }
+    int k;
+    for(k=0;k<index;k++){
+        arr[k+p]=tmpArr[k];
+    }
 }
 
 //归
@@ -34,6 +65,8 @@ mergeSort_(int arr[],int p,int q){
         printf("mid=%d,p=%d,q=%d\n",mid,p,q);
         mergeSort_(arr,p,mid);
         mergeSort_(arr,mid+1,q);
+        //将[p,mid] [mid+1,q]这两个有序数组合并为一个有序数组
+        merge(arr,p,q);
     }
 
 }
