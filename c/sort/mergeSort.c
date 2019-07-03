@@ -51,7 +51,6 @@ mergeSort_(int arr[],int p,int q){
         }
     }else{
         int mid=(p+q)/2;
-        printf("mid=%d,p=%d,q=%d\n",mid,p,q);
         mergeSort_(arr,p,mid);
         mergeSort_(arr,mid+1,q);
         //将[p,mid] [mid+1,q]这两个有序数组合并为一个有序数组
@@ -61,7 +60,7 @@ mergeSort_(int arr[],int p,int q){
 }
 
 int main(){
-    int arr[]={3,1,2,0,9,7,-1,5};
+    int arr[]={3,1,2,0,9,7,-1,5,-10,100,99,8};
     int len=sizeof(arr)/ sizeof(int);
 
     mergeSort_(arr,0,len-1);
