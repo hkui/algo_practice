@@ -8,7 +8,6 @@
 merge(int arr[],int p,int q){
     if(p ==q) return;
     int mid=(p+q)/2;
-    printf("p=%d,q=%d\n");
     int len=q-p+1;
 
     int *tmpArr=(int *)malloc(len*sizeof(int));
@@ -16,30 +15,20 @@ merge(int arr[],int p,int q){
     int index=0;
     while(i<=mid&& j<=q ){
         if(arr[i]<arr[j]){
-            tmpArr[index]=arr[i];
-            i++;
-            index++;
+            tmpArr[index++]=arr[i++];
         }else if(arr[i]>arr[j]){
-            tmpArr[index]=arr[j];
-            j++;
-            index++;
+            tmpArr[index++]=arr[j++];
         }else{
-            tmpArr[index]=arr[i];
-            index++;
-            tmpArr[index]=arr[j];
-            index++;
-            i++;
-            j++;
+            tmpArr[index++]=arr[i++];
+            tmpArr[index++]=arr[j++];
         }
     }
     while(i<=mid){
-        tmpArr[index++]=arr[i];
+        tmpArr[index++]=arr[i++];
 
-        i++;
     }
     while(j<=mid){
-        tmpArr[index++]=arr[j];
-        j++;
+        tmpArr[index++]=arr[j++];
     }
     int k;
     for(k=0;k<index;k++){
