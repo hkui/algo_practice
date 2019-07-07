@@ -21,10 +21,11 @@ void insertSort(int  arr[],int size){
 }
 
 int main(){
-    int arr[5]={3,2,1,5,7};
-    insertSort(arr,5);
+    int arr[]={3,2,1,5,7,-1,5,7,9,0};
+    int len= sizeof(arr)/ sizeof(int);
+    insertSort(arr,len);
     int i=0;
-    for(;i<5;i++){
+    for(;i<len;i++){
         printf("%d ",arr[i]);
     }
     printf("\n");

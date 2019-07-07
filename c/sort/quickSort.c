@@ -27,7 +27,6 @@ quickSort(int arr[],int startIndex,int endIndex){
     quickSort(arr,q+1,endIndex);
 }
 int main(){
-
     int arr[]={3,1,2,0,9,7,-1,5,-10,100,99,8};
     int len=sizeof(arr)/ sizeof(int);
     quickSort(arr,0,len-1);
