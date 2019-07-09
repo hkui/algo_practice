@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-//归并排序
+
 
 void merge(int arr[],int m,int n){
-    int *tmparr=malloc(sizeof(int) *(n-m+1));
+    int len=n-m+1;
+    int *tmparr=malloc(sizeof(int) *len);
 
     int mid=(m+n)/2;
     int i=m;
@@ -11,34 +12,26 @@ void merge(int arr[],int m,int n){
     int index=0;
     while(i<=mid && j<=n){
         if(arr[i]<arr[j]){
-            tmparr[index]=arr[i];
-            i++;
-            index++;
+            tmparr[index++]=arr[i++];
         }else if(arr[i]>arr[j]){
-            tmparr[index]=arr[j];
-            j++;
-            index++;
+            tmparr[index++]=arr[j++];
         } else {
-            tmparr[index]=arr[i];
-            index++;i++;
-            tmparr[index]=arr[j];
-            index++;j++;
+            tmparr[index++]=arr[i++];
+            tmparr[index++]=arr[j++];
         }
     }
+
     while(i<=mid){
-        arr[index]=arr[i];
-        index++;
-        i++;
+        tmparr[index++]=arr[i++];
     }
     while(j<=n){
-        arr[index]=arr[j];
-        index++;
-        j++;
+        tmparr[index++]=arr[j++];
     }
-    for(i=0;i<=index;i++){
-        arr[i+m]=tmparr[i];
+    int k;
+    for(k=0;k<index;k++){
+        arr[k+m]=tmparr[k];
     }
-
+    free(tmparr);
 }
 
 void mergeSort(int arr[],int m,int n){
@@ -54,13 +47,16 @@ void mergeSort(int arr[],int m,int n){
 
 
 int main(){
-    int arr[]={4,2,5,1,6,3};
-
+    int arr[]={3,1,2,0,9,7,-1,5,-10,100,99,8};
     int len= sizeof(arr)/ sizeof(int);
     mergeSort(arr,0,len-1);
+
     int i=0;
+
     for(;i<len;i++){
         printf("%d ",arr[i]);
+
+
     }
     printf("\n");
 

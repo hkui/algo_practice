@@ -27,7 +27,7 @@ merge(int arr[],int p,int q){
         tmpArr[index++]=arr[i++];
 
     }
-    while(j<=mid){
+    while(j<=q){
         tmpArr[index++]=arr[j++];
     }
     int k;
@@ -60,7 +60,8 @@ mergeSort_(int arr[],int p,int q){
 }
 
 int main(){
-    int arr[]={3,1,2,0,9,7,-1,5,-10,100,99,8};
+//    int arr[]={3,1,2,0,9,7,-1,5,-10,100,99,8};
+    int arr[]={4,2,5,1,6,3};
     int len=sizeof(arr)/ sizeof(int);
 
     mergeSort_(arr,0,len-1);
