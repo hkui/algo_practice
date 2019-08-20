@@ -46,8 +46,27 @@ function delNode(Stu $head,$n){
     }
 }
 
-$head=createStu(["a","b","c","d"]);
+/**
+ * @param Stu $head
+ * @param $node_name
+ * 查找某个元素的下标
+ * 没有的话返回-1
+ */
+function findNode(Stu $head,$node_name){
+    $cur=$head->next;
+    while($cur){
+        if($cur->name==$node_name){
+            return $cur;
+        }
+
+        $cur=$cur->next;
+    }
+    return -1;
+}
+
+$head=createStu(["a","b","c","d","php","go"]);
 printNode($head);
 delNode($head,2);
 echo '######### delete no=2'.PHP_EOL;
 printNode($head);
+print_r(findNode($head,'php'));
