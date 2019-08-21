@@ -18,6 +18,9 @@ Success belongs to the persevering!
 - [x] [数组实现顺序队列](https://github.com/hkui/algo_practice/blob/master/c/queue/arrayQueue.c)
 - [x] [链表实现一个链式队列](https://github.com/hkui/algo_practice/blob/master/c/queue/linkListQueue.c)
 - [x] [循环队列](https://github.com/hkui/algo_practice/blob/master/c/queue/circleQueue.c)
+* 排序
+ - [x] [排序算法](https://github.com/hkui/algo_practice/tree/master/md/c/sort)
+
 
 ##### PHP
 

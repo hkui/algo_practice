@@ -4,7 +4,7 @@
 * 那么再用一个指针p2从头开始和p1一起走，等p1走到链表结尾，那么p2正好走了```(len-n)```，完美！
 * 此时p2的位置就是倒数第n+1个节点位置
 
-[delReciprocalN.c](https://github.com/hkui/algo_practice/blob/master/c/linklist/delReciprocalN.c)
+[delReciprocalN.c](https://github.com/hkui/algo_practice/blob/master/c/04_linklist/delReciprocalN.c)
 
 
 
