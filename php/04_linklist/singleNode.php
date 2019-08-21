@@ -108,7 +108,9 @@ class nodeList{
             if($name == $cur->name){
                 return true;
             }
+            $cur=$cur->next;
         }
+
         return false;
     }
 
@@ -121,7 +123,7 @@ class nodeList{
             return;
         }
         $node=new singleNode($name);
-        $node->net=$this->head->next;
+        $node->next=$this->head->next;
         $this->head->next=$node;
         $this->used++;
     }
@@ -133,6 +135,11 @@ class nodeList{
         $cur=$this->head->next;
         $prev=$this->head;
         while ($cur){
+            if(!$cur->next){
+                $prev->next=null;
+                $this->used--;
+                return;
+            }
             $prev=$cur;
             $cur=$cur->next;
         }
@@ -145,7 +152,8 @@ class nodeList{
 
     /**
      * @param $name
-     * 访问一个元素
+    越靠近链表尾部的节点是越早之前访问的
+    当有一个新的数据被访问时，从链表头开始顺序遍历链表
      * 1.在链表里
      *      将这个节点从链表里删除,然后插入到头部
      * 2.不在链表里
@@ -159,8 +167,12 @@ class nodeList{
             $this->unshift($name);
 
         }else{
+            //链表已满
             if($this->isFull()){
-
+                $this->pop();
+                $this->unshift($name);
+            }else{  //链表未满
+                $this->unshift($name);
             }
         }
     }
