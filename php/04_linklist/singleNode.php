@@ -24,6 +24,8 @@ class singleNode
  * 2.删除
  * 3.反转
  * 4.lru
+ * 5.找中间节点
+ * 6.回文判断
  */
 class nodeList
 {

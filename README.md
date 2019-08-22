@@ -23,6 +23,8 @@ Success belongs to the persevering!
 
 
 ##### PHP
+* 链表
+- [x] [单链表的基本操作(创建,删除特定节点,反转，lru,找中间节点,回文判断)](https://github.com/hkui/algo_practice/tree/master/php/04_linklist)
 
 
 
