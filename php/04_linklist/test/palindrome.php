@@ -1,9 +1,20 @@
 <?php
 include '../singleNode.php';
 
-$len=10;
-$arr=["a","b","c","d","e"];
-$nodelList=nodeList::createNode($arr,10);
-$nodelList->printNode();
 
-print_r($nodelList->isPalindrome());
+$testData=[
+    ['a'],
+    ["a","b"],
+    ["a","b","a"],
+    ["a","b","b","a"],
+    ["a","b","c","b"],
+    ["a","b","c","b","a"],
+    ["a","b","c","c","b","a"],
+];
+foreach ($testData as $v){
+    $nodelList=nodeList::createNode($v);
+    echo $nodelList->printNode() ."===>".var_export($nodelList->isPalindrome(),1).PHP_EOL;
+
+}
+
+

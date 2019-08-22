@@ -32,7 +32,7 @@ class nodeList
     public $used;   //已经使用了的长度
 
     //创建链表 返回nodelist
-    public static function createNode($name_arr, $len)
+    public static function createNode($name_arr, $len=10)
     {
         $head = new singleNode('', null);
         $cur = $head;
@@ -54,12 +54,13 @@ class nodeList
     //遍历节点
     public function printNode()
     {
+        $str = '';
         $node = $this->head->next;
         while ($node) {
-            echo $node->name . " ";
+            $str .= $node->name . " ";
             $node = $node->next;
         }
-        echo PHP_EOL;
+        return $str;
     }
     //反转
 
@@ -196,12 +197,13 @@ class nodeList
      * 查找中间节点
      * 快慢指针
      */
-    public function findMiddle(){
-        $fast=$this->head;
-        $slow=$fast;
-        while($fast && $fast->next){
-            $slow=$slow->next;
-            $fast=$fast->next->next;
+    public function findMiddle()
+    {
+        $fast = $this->head;
+        $slow = $fast;
+        while ($fast && $fast->next) {
+            $slow = $slow->next;
+            $fast = $fast->next->next;
 
         }
         return $slow;
@@ -212,22 +214,39 @@ class nodeList
      * abcba
      * abba
      * a
+     * 使用快慢指针
      * 找到中间节点(在找到中间节点的同时反转已经遍历过的中间节点前的节点)
+     * 这里注意下节点是奇数个还是偶数个
      */
-    public function isPalindrome(){
-        $fast=$this->head;
-        $slow=$fast;
-        $slow_prev=null;
-        while($fast && $fast->next){
-            $fast=$fast->next->next;
-            $slow_next=$slow->next;
-            if($slow_prev==$this->head){
-                $slow->next=null;
-            }
-            $slow_prev=$slow;
-            $slow=$slow_next;
+    public function isPalindrome()
+    {
+        $fast = $this->head;
+        $slow = $fast;
+        $slow_prev = null;
+        while ($fast && $fast->next) {
+            $fast = $fast->next->next;
+            $slow_next = $slow->next;
+            $slow->next = $slow_prev;
+            $slow_prev = $slow;
+            $slow = $slow_next;
         }
-        return $slow;
+        if ($fast) { //偶数位个节点  a b b a 此时 slow为第一个b,其next依然指向下一个b
+            $slow_next = $slow->next;
+        }
+        $slow->next = $slow_prev; //b指向了a
+        //奇数个 a b c 此时slow为b,slow_prev=为a  slow_next为b
+
+        //下面比较 链表的前半部分
+
+        while ($slow_next && $slow) {
+            if ($slow_next->name != $slow->name) {
+                return false;
+            }
+            $slow_next = $slow_next->next;
+            $slow = $slow->next;
+        }
+        return true;
+
     }
 }
 
