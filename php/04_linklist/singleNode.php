@@ -197,7 +197,7 @@ class nodeList
      * 快慢指针
      */
     public function findMiddle(){
-        $fast=$this->head->next;
+        $fast=$this->head;
         $slow=$fast;
         while($fast && $fast->next){
             $slow=$slow->next;
@@ -205,7 +205,29 @@ class nodeList
 
         }
         return $slow;
+    }
 
+    /**
+     * 是不是回文串
+     * abcba
+     * abba
+     * a
+     * 找到中间节点(在找到中间节点的同时反转已经遍历过的中间节点前的节点)
+     */
+    public function isPalindrome(){
+        $fast=$this->head;
+        $slow=$fast;
+        $slow_prev=null;
+        while($fast && $fast->next){
+            $fast=$fast->next->next;
+            $slow_next=$slow->next;
+            if($slow_prev==$this->head){
+                $slow->next=null;
+            }
+            $slow_prev=$slow;
+            $slow=$slow_next;
+        }
+        return $slow;
     }
 }
 
