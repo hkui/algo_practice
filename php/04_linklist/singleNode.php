@@ -250,5 +250,50 @@ class nodeList
         return true;
 
     }
+
+    /**
+     * 检测是否有环
+     * 快慢指针 fast或者fast->next为Null则无环
+     *         fast和slow能相遇表示有环
+     */
+    public function hasHoop(){
+        $slow=$fast=$this->head;
+        while($fast && $fast->next){
+            $slow=$slow->next;
+            $fast=$fast->next->next;
+            if($slow ==$fast){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**对于一个有环的链表
+     * 在第一次相交点 后,快慢指针再次相遇走过的步数即为环的长度
+     * @return bool
+     *
+     */
+    public function hoopLen(){
+        $slow=$fast=$this->head;
+        $hoop_len=0;
+        $connect_time=0;
+        while($fast && $fast->next){
+            if($connect_time==1){
+                $hoop_len++;
+            }
+            $slow=$slow->next;
+            $fast=$fast->next->next;
+            if($slow ==$fast){
+                $connect_time++;
+                if($connect_time==2){
+                    break;
+                }
+            }
+        }
+        return $hoop_len;
+
+    }
+
+
 }
 
