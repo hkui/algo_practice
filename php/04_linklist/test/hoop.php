@@ -15,7 +15,18 @@ $nodelList=nodeList::createNode($arr);
 $nodelList->head->next->next->next->next->next->next->next=$nodelList->head->next->next->next;
 var_dump($nodelList->hasHoop());
 
-echo "hoopLen=".$nodelList->hoopLen().PHP_EOL;
+$hoopLen=$nodelList->hoopLen();
+echo "hoopLen=".$hoopLen.PHP_EOL;
+
+//连接点信息
+//得到连接点和head到连接点的长度
+$connect=$nodelList->findConnectPoint();
+
+echo "connnectPointName=".$connect[0].PHP_EOL;
+
+
+echo "链表长度=".($hoopLen+$connect[1]).PHP_EOL;
+
 
 
 

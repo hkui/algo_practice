@@ -34,7 +34,7 @@ class nodeList
     public $used;   //已经使用了的长度
 
     //创建链表 返回nodelist
-    public static function createNode($name_arr, $len=10)
+    public static function createNode($name_arr, $len = 10)
     {
         $head = new singleNode('', null);
         $cur = $head;
@@ -256,12 +256,13 @@ class nodeList
      * 快慢指针 fast或者fast->next为Null则无环
      *         fast和slow能相遇表示有环
      */
-    public function hasHoop(){
-        $slow=$fast=$this->head;
-        while($fast && $fast->next){
-            $slow=$slow->next;
-            $fast=$fast->next->next;
-            if($slow ==$fast){
+    public function hasHoop()
+    {
+        $slow = $fast = $this->head;
+        while ($fast && $fast->next) {
+            $slow = $slow->next;
+            $fast = $fast->next->next;
+            if ($slow == $fast) {
                 return true;
             }
         }
@@ -273,25 +274,54 @@ class nodeList
      * @return bool
      *
      */
-    public function hoopLen(){
-        $slow=$fast=$this->head;
-        $hoop_len=0;
-        $connect_time=0;
-        while($fast && $fast->next){
-            if($connect_time==1){
+    public function hoopLen()
+    {
+        $slow = $fast = $this->head;
+        $hoop_len = 0;
+        $connect_time = 0;
+        while ($fast && $fast->next) {
+            if ($connect_time == 1) {
                 $hoop_len++;
             }
-            $slow=$slow->next;
-            $fast=$fast->next->next;
-            if($slow ==$fast){
+            $slow = $slow->next;
+            $fast = $fast->next->next;
+            if ($slow == $fast) {
                 $connect_time++;
-                if($connect_time==2){
+                if ($connect_time == 2) {
                     break;
                 }
             }
         }
         return $hoop_len;
+    }
 
+    /**
+     * 找出有环单链表的链接点
+     * 碰撞点p到连接点的距离=头指针到连接点的距离，因此，分别从碰撞点、头指针开始走，相遇的那个点就是连接点
+     */
+    public function findConnectPoint()
+    {
+        $slow = $fast = $this->head;
+        while ($fast && $fast->next) {
+
+            $slow = $slow->next;
+            $fast = $fast->next->next;
+            //碰撞点
+            if ($slow == $fast) {
+                break;
+            }
+        }
+        $head_to_connect_len=0;
+        //找到碰撞点$slow
+        $head = $this->head;
+        while (true) {
+            $head = $head->next;
+            $slow = $slow->next;
+            $head_to_connect_len++;
+            if ($head == $slow) {
+                return [$head->name,$head_to_connect_len];
+            }
+        }
     }
 
 
