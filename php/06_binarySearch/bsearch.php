@@ -9,7 +9,7 @@ function bsearch($arr,$n){
     //注意边界
     while($low<=$high){
 //        $mid=intval(($low+$high)/2);
-        $mid=$high-intval(($high-$low)>>1);
+        $mid=$low+(($high-$low)>>1);
         if($arr[$mid]==$n){
             return $mid;
         }elseif($n<$arr[$mid]){  //n在 [low，mid-1]
