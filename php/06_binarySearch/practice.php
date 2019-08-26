@@ -121,20 +121,25 @@ function  bsearch_last_elt($arr,$value){
 }
 
 $arr=[1,3,7,9,9,11,30,30,30,30,30,30,100];
-echo implode(' ',$arr).PHP_EOL;
-echo bsearch_first_eq($arr,9);
+foreach ($arr as $k=>$v){
+    echo $k.":".$v.PHP_EOL;
+}
+echo PHP_EOL."################".PHP_EOL;
+echo "fist eq 9=>".bsearch_first_eq($arr,9);
 echo PHP_EOL;
 
 
-
+echo  "last eq 9=>";
 echo bsearch_last_eq($arr,9);
 echo PHP_EOL;
 
+echo  "last (<=10) ==>";
 echo bsearch_last_elt($arr,10);
 echo PHP_EOL;
-die;
-$arr=[1,3,5,5,6,8];
-echo bsearch_first_gt($arr,4);
+
+
+echo "first (>=30) ==>".bsearch_first_egt($arr,30);
+echo PHP_EOL;
 
 
 
