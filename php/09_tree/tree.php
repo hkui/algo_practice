@@ -12,7 +12,7 @@ class Tree{
         $cur=$this->root;
         $dataNode=new Node($data);
         while($cur){
-            if($data<=$cur->data){
+            if($data<$cur->data){
                 if($cur->left){
                     $cur=$cur->left;
                 }else{
@@ -20,7 +20,7 @@ class Tree{
                     return;
                 }
 
-            }elseif ($data>$cur->data){
+            }elseif ($data>=$cur->data){
                 if($cur->right){
                     $cur=$cur->right;
                 }else{
@@ -72,25 +72,7 @@ class Tree{
     }
 }
 
-$tree=new Tree(5);
-$tree->insert(2);
-$tree->insert(3);
-$tree->insert(6);
-$tree->insert(7);
-$tree->insert(7);
-$tree->insert(7);
-$tree->insert(8);
-$tree->insert(0);
 
-print_r($tree->root);
-
-$r=$tree->find(7);
-print_r($r);
-$tree->inOrder($tree->root);
-
-
-
-echo PHP_EOL;
 
 
 
