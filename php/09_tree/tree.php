@@ -45,6 +45,63 @@ class Tree{
             }
         }
     }
+
+    /**
+     * @param $data
+     * 找到并且删除
+     */
+    public function delete($data){
+        $cur=$this->root;
+        $parent=null;
+        $left=0;
+        //找到节点
+        while($cur){
+            if($data==$cur->data){
+                break;
+            }
+            $parent=$cur;
+            if($data>$cur->data){
+                $cur=$cur->right;
+            }else{
+                $cur=$cur->left;
+                $left=1;
+            }
+        }
+        //没有叶子节点
+        if(empty($cur->left) && empty($cur->right)){
+            //说明是跟节点
+            if($parent==null){
+                $this->root=null;
+            }else{
+                if($left){
+                    $parent->left=null;
+                }else{
+                    $parent->right=null;
+                }
+            }
+        }elseif($cur->left ||$cur->right){
+            if($cur->left){
+                if($left){
+                    $parent->left=$cur->left;
+                }else{
+                    $parent->right=$cur->left;
+                }
+            }else{
+                if($left){
+                    $parent->left=$cur->right;
+                }else{
+                    $parent->right=$cur->right;
+                }
+            }
+        }else{
+            //找到最小的右子节点
+            
+
+
+        }
+
+
+    }
     //前序遍历
     public function preOrder($root){
         if($root){
