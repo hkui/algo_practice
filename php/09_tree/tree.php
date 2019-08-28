@@ -6,66 +6,94 @@ class Tree{
     public $root;
     public function __construct($data)
     {
-        if($data!=null){
-            $this->root=new Node($data);
-        }
+        $this->root=new Node($data);
     }
     public function insert($data){
-        
+        $cur=$this->root;
+        $dataNode=new Node($data);
+        while($cur){
+            if($data<=$cur->data){
+                if($cur->left){
+                    $cur=$cur->left;
+                }else{
+                    $cur->left=$dataNode;
+                    return;
+                }
+
+            }elseif ($data>$cur->data){
+                if($cur->right){
+                    $cur=$cur->right;
+                }else{
+                    $cur->right=$dataNode;
+                    return;
+                }
+
+            }
+        }
+
+    }
+    public function find($data){
+        $cur=$this->root;
+        while($cur){
+            if($data==$cur->data){
+                return $cur;
+            }
+            if($data>$cur->data){
+                $cur=$cur->right;
+            }else{
+                $cur=$cur->left;
+            }
+        }
+    }
+    //前序遍历
+    public function preOrder($root){
+        if($root){
+            echo $root->data." ";
+            $this->preOrder($root->left);
+            $this->preOrder($root->right);
+        }
+    }
+//中序遍历
+    public function inOrder($root){
+        if($root){
+            $this->inOrder($root->left);
+            echo $root->data." ";
+            $this->inOrder($root->right);
+        }
+    }
+//后序遍历
+    public function postOrder($root){
+        if($root){
+            $this->postOrder($root->left);
+            $this->postOrder($root->right);
+            echo $root->data." ";
+
+        }
     }
 }
 
-$nodea=new node("a");
-$nodeb=new node("b");
-$nodec=new node("c");
-$noded=new node("d");
-$nodee=new node("e");
-$nodef=new node("f");
-$nodeg=new node("g");
+$tree=new Tree(5);
+$tree->insert(2);
+$tree->insert(3);
+$tree->insert(6);
+$tree->insert(7);
+$tree->insert(7);
+$tree->insert(7);
+$tree->insert(8);
+$tree->insert(0);
+
+print_r($tree->root);
+
+$r=$tree->find(7);
+print_r($r);
+$tree->inOrder($tree->root);
 
 
-$nodea->left=$nodeb;
-$nodea->right=$nodec;
 
-$nodeb->left=$noded;
-$nodeb->right=$nodee;
-
-$nodec->left=$nodef;
-$nodec->right=$nodeg;
-
-//前序遍历
-function preOrder($root){
-    if($root){
-        echo $root->data." ";
-        preOrder($root->left);
-        preOrder($root->right);
-
-    }
-}
-function inOrder($root){
-    if($root){
-        inOrder($root->left);
-        echo $root->data." ";
-        inOrder($root->right);
-
-    }
-}
-
-function postOrder($root){
-    if($root){
-        postOrder($root->left);
-        postOrder($root->right);
-        echo $root->data." ";
-
-    }
-}
-preOrder($nodea);
 echo PHP_EOL;
 
-inOrder($nodea);
-echo PHP_EOL;
-postOrder($nodea);
-echo PHP_EOL;
+
+
 
 
 
