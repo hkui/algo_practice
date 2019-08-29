@@ -58,100 +58,102 @@ class Tree
      */
     public function delete($data)
     {
-        $cur = $this->root;
-        $parent = null;
+        $to_delete_node = $this->root; //要删除的节点
+        $to_delete_parent_node = null; //要删除节点的父节点
         $left = 0;
-        //找到节点
-        while ($cur) {
-            if ($data == $cur->data) {
+        //查找要删除的节点
+        while ($to_delete_node) {
+            if ($data == $to_delete_node->data) {
                 break;
             }
-            $parent = $cur;
-            if ($data > $cur->data) {
-                $cur = $cur->right;
+            $to_delete_parent_node = $to_delete_node;
+            if ($data > $to_delete_node->data) {
+                $to_delete_node = $to_delete_node->right;
                 $left = 0;
             } else {
-                $cur = $cur->left;
+                $to_delete_node = $to_delete_node->left;
                 $left = 1;
             }
         }
-
+        //没找到要删除的节点
+        if (empty($to_delete_node)) {
+            return;
+        }
 
         //没有叶子节点
-        if (empty($cur->left) && empty($cur->right)) {
-            //说明要删除的节点时根节点，总共就一个元素
-            if ($parent == null) {
+        if (empty($to_delete_node->left) && empty($to_delete_node->right)) {
+            //说明要删除的节点是根节点，总共就一个元素
+            if ($to_delete_parent_node == null) {
                 $this->root = null;
                 return;
             }
             //不是根节点，且无叶子节点
             if ($left) {
-                $parent->left = null;
+                $to_delete_parent_node->left = null;
             } else {
-                $parent->right = null;
+                $to_delete_parent_node->right = null;
             }
             return;
         }
-        if ($cur->left && $cur->right) {
+        //有左节点和右节点 查右子树的最小节点
+        if ($to_delete_node->left && $to_delete_node->right) {
             //找到最小的右子节点 然后放到要删除的节点上
-            $rightMinParent = $cur;
-            $rightMin = $cur->right;
-            while ($rightMin) {
-                if ($rightMin->left) {
-                    $rightMinParent = $rightMin;
-                    $rightMin = $rightMin->left;
-                } else {
-                    break;
-                }
+            $rightMinParent = $to_delete_node;  //右子树的最小节点 的父节点
+            $rightMin = $to_delete_node->right; //右子树的最小节点
+            while ($rightMin->left) {
+                $rightMinParent = $rightMin;
+                $rightMin = $rightMin->left;
             }
 
-            if ($parent == null) {
+            if ($to_delete_parent_node == null) {
                 $this->root = $rightMin;
-
             } else {
                 if ($left) {
-                    $parent->left = $rightMin;
+                    $to_delete_parent_node->left = $rightMin;
                 } else {
-                    $parent->right = $rightMin;
+                    $to_delete_parent_node->right = $rightMin;
                 }
 
             }
-
+            $rightMin->left = $to_delete_node->left;
             $rightMinParent->left = null;
-            $rightMin->left = $cur->left;
-            $rightMin->right = $cur->right;
+
+
+            if ($rightMin !== $to_delete_node->right) {
+                $rightMin->right = $to_delete_node->right;
+            }
+
             return;
         }
 
         //有1个叶子节点，左节点或者右节点
-        if ($cur->left || $cur->right) {
 
-            if ($parent == null) {
-                $this->root = $cur;
-                return;
-            }
-            //只有左子树
-            if ($cur->left) {
-                if ($left) {
-                    $parent->left = $cur->left;
-                } else {
-                    $parent->right = $cur->left;
-                }
-                return;
-            }
 
-            //只有右子树
+        if ($to_delete_parent_node == null) {
+            $this->root = $to_delete_node;
+            return;
+        }
+        //只有左子树
+        if ($to_delete_node->left) {
             if ($left) {
-                $parent->left = $cur->right;
+                $to_delete_parent_node->left = $to_delete_node->left;
             } else {
-                $parent->right = $cur->right;
+                $to_delete_parent_node->right = $to_delete_node->left;
             }
             return;
-
         }
 
+        //只有右子树
+        if ($left) {
+            $to_delete_parent_node->left = $to_delete_node->right;
+        } else {
+            $to_delete_parent_node->right = $to_delete_node->right;
+        }
+        return;
 
     }
+
+
 
     //前序遍历
     public function preOrder($root)
