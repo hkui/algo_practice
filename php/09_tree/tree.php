@@ -129,27 +129,28 @@ class Tree
         //有1个叶子节点，左节点或者右节点
 
 
-        if ($to_delete_parent_node == null) {
-            $this->root = $to_delete_node;
-            return;
-        }
+
         //只有左子树
         if ($to_delete_node->left) {
-            if ($left) {
-                $to_delete_parent_node->left = $to_delete_node->left;
-            } else {
-                $to_delete_parent_node->right = $to_delete_node->left;
+            $to_delete_child_node=$to_delete_node->left;
+
+        }else{
+            //只有右子树
+            $to_delete_child_node=$to_delete_node->right;
+        }
+        if(empty($to_delete_parent_node)){
+            $this->root=$to_delete_child_node;
+        }else{
+            if($left){
+                $to_delete_parent_node->left = $to_delete_child_node;
+            }else{
+                $to_delete_parent_node->right = $to_delete_child_node;
             }
-            return;
         }
 
-        //只有右子树
-        if ($left) {
-            $to_delete_parent_node->left = $to_delete_node->right;
-        } else {
-            $to_delete_parent_node->right = $to_delete_node->right;
-        }
-        return;
+
+
+
 
     }
 

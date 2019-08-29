@@ -16,8 +16,10 @@ $tree->insert(38);
 
 
 
-$tree->delete(12);
+$tree->delete(20);
 print_r($tree->root);
+
+
 
 
 
