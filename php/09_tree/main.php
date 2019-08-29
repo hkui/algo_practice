@@ -14,11 +14,10 @@ $tree->insert(21);
 $tree->insert(38);
 
 
-print_r($tree->root);
 
-$r=$tree->find(19);
-print_r($r);
-$tree->inOrder($tree->root);
+
+$tree->delete(20);
+print_r($tree->root);
 
 
 
