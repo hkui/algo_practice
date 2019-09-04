@@ -6,20 +6,36 @@ class heap
     public $count = 0;
     public $size; //求top n时使用
 
+    public function __construct($size = 10)
+    {
+        $this->size = $size;
+    }
+
     /**
      * @param $data
      * 插入并堆化
      */
-    public function insert($data)
+    public function insert($data, $small = false)
     {
+        if ($this->count >= $this->size) {
+            return false;
+        }
         $this->dataArr[$this->count + 1] = $data;
         $this->count++;
-        $this->heapdownToUp();
+        if ($small) {
+            $this->smallHeapLast();
+        } else {
+            $this->heapdownToUp();
+        }
     }
+
 
     //只插入
     public function insertOnly($data)
     {
+        if ($this->count >= $this->size) {
+            return false;
+        }
         $this->dataArr[$this->count + 1] = $data;
         $this->count++;
     }
@@ -39,7 +55,7 @@ class heap
     /**
      * 删除堆顶的元素
      */
-    public function deleteRoot()
+    public function deleteFirst()
     {
         $root = $this->dataArr[1];
         $last = array_pop($this->dataArr);
@@ -83,6 +99,7 @@ class heap
     /**
      * 元素从后到前，从上到下堆化
      * 从第一个非叶子节点开始
+     * 大根堆的
      */
     protected function heapUpToDown($i)
     {
@@ -152,4 +169,86 @@ class heap
         }
 
     }
+
+    /**
+     *小顶堆 堆化
+     * 插入时
+     * 堆化最后1个元素
+     */
+    public function smallHeapLast()
+    {
+        $i = $this->count;
+        while (true) {
+            $smallPos = $i;
+            $parent = intval($i / 2);
+            if ($parent >= 1) {
+                if ($this->dataArr[$smallPos] < $this->dataArr[$parent]) {
+                    $smallPos = $parent;
+                }
+            }
+            if ($smallPos == $i) {
+                break;
+            }
+            $tmp = $this->dataArr[$smallPos];
+            $this->dataArr[$smallPos] = $this->dataArr[$i];
+            $this->dataArr[$i] = $tmp;
+            $i = $smallPos;
+        }
+    }
+
+    /**
+     * 堆化根部元素(第一个元素)
+     */
+    public function smallHeapFirst()
+    {
+        $i = 1;
+        while (true) {
+            $smallpos = $i;
+            $left = 2 * $i;
+            if ($left <= $this->count) {
+                if ($this->dataArr[$smallpos] > $this->dataArr[$left]) {
+                    $smallpos = $left;
+                }
+            }
+            $right = $left + 1;
+            if ($right <= $this->count) {
+                if ($this->dataArr[$smallpos] > $this->dataArr[$right]) {
+                    $smallpos = $right;
+                }
+            }
+            if ($smallpos == $i) {
+                break;
+            }
+            $tmp = $this->dataArr[$i];
+            $this->dataArr[$i] = $this->dataArr[$smallpos];
+            $this->dataArr[$smallpos] = $tmp;
+            $i = $smallpos;
+        }
+
+    }
+
+    /**
+     * @param $data
+     */
+    public function topn($data)
+    {
+        if ($this->count >= $this->size) {
+            if ($data > $this->dataArr[1]) {
+                $this->dataArr[1] = $data;
+                $this->smallHeapFirst();
+            }
+        } else {
+            $this->dataArr[$this->count + 1] = $data;
+            $this->count++;
+            $this->smallHeapLast();
+
+        }
+        return $this->dataArr[1];
+
+    }
+
 }
+
+
+
+

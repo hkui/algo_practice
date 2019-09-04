@@ -12,7 +12,7 @@ while(($r=$heap->deleteRoot())!==null){
     echo $r." ";
 }
 print_r($heap);*/
-$heap1=new heap();
+$heap1=new heap(10);
 
 foreach ($arr as $v){
     $heap1->insertOnly($v);
