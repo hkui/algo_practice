@@ -3,15 +3,16 @@ require_once "heap.php";
 
 $arr=[50,3,60,70,45,20,100,0,58];
 
-/*$heap=new heap();
+$heap=new heap();
 foreach ($arr as $v){
     $heap->insert($v);
 }
 
-while(($r=$heap->deleteRoot())!==null){
+while(($r=$heap->deleteFirst())!==null){
     echo $r." ";
 }
-print_r($heap);*/
+print_r($heap);
+die;
 $heap1=new heap(10);
 
 foreach ($arr as $v){

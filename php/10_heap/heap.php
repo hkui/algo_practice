@@ -4,135 +4,162 @@ class heap
 {
     public $dataArr = [];
     public $count = 0;
-    public $size; //求top n时使用
+    public $size; //堆的大小 0表示不限制大小自动扩容
+    public $heapType = 1; //1 表示大根堆  0表示小根堆
 
-    public function __construct($size = 10)
+    public function __construct($size = 0, $heapType = 1)
     {
         $this->size = $size;
+        $this->heapType = $heapType;
     }
 
     /**
      * @param $data
      * 插入并堆化
      */
-    public function insert($data, $small = false)
+    public function insert($data)
     {
-        if ($this->count >= $this->size) {
+        if ($this->isFull()) {
             return false;
         }
         $this->dataArr[$this->count + 1] = $data;
         $this->count++;
-        if ($small) {
-            $this->smallHeapLast();
+        if ($this->heapType) {
+            $this->bigHeapLast();
         } else {
-            $this->heapdownToUp();
+            $this->smallHeapLast();
         }
+    }
+
+    /**
+     * @return bool
+     * 堆是否满
+     */
+    public function isFull()
+    {
+        if ($this->size == 0) {
+            return false;
+        }
+        if ($this->count >= $this->size) {
+            return true;
+        }
+        return false;
+    }
+    public function isEmpty(){
+        return empty($this->count)?true:false;
+    }
+    //返回堆顶的元素
+    public function peak(){
+        if($this->isEmpty()){
+            return null;
+        }
+        return $this->dataArr[1];
     }
 
 
     //只插入
     public function insertOnly($data)
     {
-        if ($this->count >= $this->size) {
+        if ($this->isFull()) {
             return false;
         }
         $this->dataArr[$this->count + 1] = $data;
         $this->count++;
     }
-    //大根堆，根最大,    插入节点后放到数组最后面，然后从插入的节点自下而上开始堆化
-    //这里只堆化插入元素相关的节点(就是说，如果没插入这个元素，这个是一个堆)
-    public function heapdownToUp()
-    {
-        $i = $this->count;
-        while (intval($i / 2) > 0 && $this->dataArr[$i] > $this->dataArr[intval($i / 2)]) {
-            $tmp = $this->dataArr[$i];
-            $this->dataArr[$i] = $this->dataArr[intval($i / 2)];
-            $this->dataArr[intval($i / 2)] = $tmp;
-            $i = $i / 2;
-        }
-    }
+
 
     /**
      * 删除堆顶的元素
+     * 把最后1个元素插入到堆顶
+     * 然后从堆顶开始堆化
+     * 返回堆化后的堆顶元素
      */
     public function deleteFirst()
     {
-        $root = $this->dataArr[1];
+        $first = $this->dataArr[1];
         $last = array_pop($this->dataArr);
-        if ($this->count < 1) {
+        if($this->isEmpty()){
             return null;
         }
         $this->count--;
         $i = 1;
         $this->dataArr[$i] = $last;
-
-        //至上而下的堆化
-        while (true) {
-            //找出1个最小树中最大的
-            $maxPos = $i;
-            $left = 2 * $maxPos;
-            $right = $left + 1;
-            if ($left <= $this->count) {
-                if ($this->dataArr[$maxPos] < $this->dataArr[$left]) {
-                    $maxPos = $left;
-                }
-
-            }
-            if ($right <= $this->count) {
-                if ($this->dataArr[$maxPos] < $this->dataArr[$right]) {
-                    $maxPos = $right;
-                }
-            }
-            if ($maxPos == $i) { //在3个个节点间没发生替换 满足堆的性质 退出循环
-                break;
-            }
-
-            $tmp = $this->dataArr[$maxPos];
-            $this->dataArr[$maxPos] = $this->dataArr[$i];
-            $this->dataArr[$i] = $tmp;
-            $i = $maxPos;
+        if ($this->heapType) {
+            $this->bigHeapFirst();
+        } else {
+            $this->smallHeapFirst();
         }
-        return $root;
+        return $first;
 
     }
 
     /**
-     * 元素从后到前，从上到下堆化
-     * 从第一个非叶子节点开始
-     * 大根堆的
+     * 从某一个结点开始向下堆化
      */
-    protected function heapUpToDown($i)
+    protected function heapFromOneToDown($i)
     {
-        $maxPos = $i;
-        while (true) {
-            if (2 * $i <= $this->count) {
-                if ($this->dataArr[$maxPos] < $this->dataArr[2 * $i]) {
-                    $maxPos = 2 * $i;
+        //大根堆
+        if ($this->heapType) {
+            $maxPos = $i;
+            while (true) {
+                if (2 * $i <= $this->count) {
+                    if ($this->dataArr[$maxPos] < $this->dataArr[2 * $i]) {
+                        $maxPos = 2 * $i;
+                    }
                 }
-            }
-            if (2 * $i + 1 <= $this->count) {
-                if ($this->dataArr[$maxPos] < $this->dataArr[2 * $i + 1]) {
-                    $maxPos = 2 * $i + 1;
+                if (2 * $i + 1 <= $this->count) {
+                    if ($this->dataArr[$maxPos] < $this->dataArr[2 * $i + 1]) {
+                        $maxPos = 2 * $i + 1;
+                    }
                 }
-            }
-            //不需要交换
-            if ($i == $maxPos) {
-                break;
-            }
-            $tmp = $this->dataArr[$maxPos];
-            $this->dataArr[$maxPos] = $this->dataArr[$i];
-            $this->dataArr[$i] = $tmp;
-            //继续往下堆化
-            $i = $maxPos;
+                //不需要交换
+                if ($i == $maxPos) {
+                    break;
+                }
+                $tmp = $this->dataArr[$maxPos];
+                $this->dataArr[$maxPos] = $this->dataArr[$i];
+                $this->dataArr[$i] = $tmp;
+                //继续往下堆化
+                $i = $maxPos;
 
+            }
+        } else {
+            //小根堆
+            $minPos = $i;
+            while (true) {
+                if (2 * $i <= $this->count) {
+                    if ($this->dataArr[$minPos] > $this->dataArr[2 * $i]) {
+                        $minPos = 2 * $i;
+                    }
+                }
+                if (2 * $i + 1 <= $this->count) {
+                    if ($this->dataArr[$minPos] > $this->dataArr[2 * $i + 1]) {
+                        $minPos = 2 * $i + 1;
+                    }
+                }
+                //不需要交换
+                if ($i == $minPos) {
+                    break;
+                }
+                $tmp = $this->dataArr[$minPos];
+                $this->dataArr[$minPos] = $this->dataArr[$i];
+                $this->dataArr[$i] = $tmp;
+                //继续往下堆化
+                $i = $minPos;
+
+            }
         }
+
     }
 
-    //整体堆化
-    public function doHeapUpToDown()
+
+    /**
+     * 对于1个完全不符合堆性质的 整体堆化
+     */
+    public function heapAll()
     {
         for ($i = intval($this->count / 2); $i >= 1; $i--) {
-            $this->heapUpToDown($i);
+            $this->heapFromOneToDown($i);
         }
     }
 
@@ -197,6 +224,7 @@ class heap
     }
 
     /**
+     * 小根堆
      * 堆化根部元素(第一个元素)
      */
     public function smallHeapFirst()
@@ -228,11 +256,56 @@ class heap
     }
 
     /**
+     * 大根堆
+     * 堆化根部元素(第一个元素)
+     */
+    public function bigHeapFirst()
+    {
+        $i = 1;
+        while (true) {
+            $maxpos = $i;
+            $left = 2 * $i;
+            if ($left <= $this->count) {
+                if ($this->dataArr[$maxpos] < $this->dataArr[$left]) {
+                    $maxpos = $left;
+                }
+            }
+            $right = $left + 1;
+            if ($right <= $this->count) {
+                if ($this->dataArr[$maxpos] < $this->dataArr[$right]) {
+                    $maxpos = $right;
+                }
+            }
+            if ($maxpos == $i) {
+                break;
+            }
+            $tmp = $this->dataArr[$i];
+            $this->dataArr[$i] = $this->dataArr[$maxpos];
+            $this->dataArr[$maxpos] = $tmp;
+            $i = $maxpos;
+        }
+
+    }
+    //大根堆，  插入节点后放到数组最后面，然后从插入的节点自下而上开始堆化
+    //这里只堆化插入元素相关的节点(就是说，如果没插入这个元素，这个是一个堆)
+    public function bigHeapLast()
+    {
+        $i = $this->count;
+        while (intval($i / 2) > 0 && $this->dataArr[$i] > $this->dataArr[intval($i / 2)]) {
+            $tmp = $this->dataArr[$i];
+            $this->dataArr[$i] = $this->dataArr[intval($i / 2)];
+            $this->dataArr[intval($i / 2)] = $tmp;
+            $i = $i / 2;
+        }
+    }
+
+    /**
      * @param $data
      */
     public function topn($data)
     {
-        if ($this->count >= $this->size) {
+        //堆满了
+        if ($this->isFull()) {
             if ($data > $this->dataArr[1]) {
                 $this->dataArr[1] = $data;
                 $this->smallHeapFirst();

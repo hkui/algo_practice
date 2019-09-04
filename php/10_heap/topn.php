@@ -1,6 +1,5 @@
 <?php
 /**
- *1.静态数据集合求top n
  *2.动态数据集合求top n
  */
 require_once "heap.php";
