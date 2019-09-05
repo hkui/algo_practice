@@ -1,5 +1,5 @@
 <?php
-require_once "heap.php";
+require_once "Heap.php";
 
 $arr = [9, 8, 11, 4, 2, 6, 5, 1, -1, 3, 20, 10];
 //$arr=[9,8,11,4,2,6,5,100];
@@ -10,9 +10,9 @@ findMiddle($arr);
 function findMiddle($arr)
 {
     //大顶堆
-    $bigHeap = new heap(0, 1);
+    $bigHeap = new Heap(0, 1);
     //小顶堆
-    $smallHeap = new heap(0, 0);
+    $smallHeap = new Heap(0, 0);
 
     foreach ($arr as $k => $v) {
         if ($bigHeap->isEmpty()) {

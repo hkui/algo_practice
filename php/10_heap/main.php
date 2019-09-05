@@ -1,5 +1,5 @@
 <?php
-require_once "heap.php";
+require_once "Heap.php";
 
 $arr=[50,3,60,70,45,20,100,0,58];
 
@@ -12,7 +12,7 @@ while(($r=$heap->deleteFirst())!==null){
     echo $r." ";
 }
 
-$heap1=new heap(10);
+$heap1=new Heap(10);
 
 foreach ($arr as $v){
     $heap1->insertOnly($v);

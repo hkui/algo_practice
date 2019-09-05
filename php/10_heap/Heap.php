@@ -1,6 +1,6 @@
 <?php
 
-class heap
+class Heap
 {
     public $dataArr = [];
     public $count = 0;

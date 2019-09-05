@@ -2,7 +2,7 @@
 /**
  *2.动态数据集合求top n
  */
-require_once "heap.php";
+require_once "Heap.php";
 
 $static_data=[2,5,3,1,0,7,6,10];
 
@@ -18,7 +18,7 @@ $static_data=[2,5,3,1,0,7,6,10];
 
 维持1个小顶堆 大小为3即可
 */
-$heap=new heap(3);
+$heap=new Heap(3);
 foreach ($static_data as $v){
     echo $heap->topn($v).PHP_EOL;
 }
