@@ -11,8 +11,7 @@ foreach ($arr as $v){
 while(($r=$heap->deleteFirst())!==null){
     echo $r." ";
 }
-print_r($heap);
-die;
+
 $heap1=new heap(10);
 
 foreach ($arr as $v){
@@ -20,9 +19,9 @@ foreach ($arr as $v){
 }
 
 
-$heap1->doHeapUpToDown();
+$heap1->heapAll();
 //堆化后的
 print_r($heap1->dataArr);
-
+//堆排序
 $heap1->heapSort();
 print_r($heap1->dataArr);
