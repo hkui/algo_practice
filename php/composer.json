@@ -1,0 +1,17 @@
+{
+    "name": "hkui/algo_php_practice",
+    "description": "php alogo",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "hkui",
+            "email": "764432054@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Algo_10_heap\\":"10_heap/"
+        }
+    }
+}

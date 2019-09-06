@@ -1,5 +1,6 @@
 <?php
-require_once "Heap.php";
+namespace Algo_10_heap;
+require_once '../vendor/autoload.php';
 
 $arr = [9, 8, 11, 4, 2, 6, 5, 1, -1, 3, 20, 10];
 //$arr=[9,8,11,4,2,6,5,100];

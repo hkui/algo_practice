@@ -1,9 +1,11 @@
 <?php
-require_once "Heap.php";
+namespace Algo_10_heap;
+
+require_once '../vendor/autoload.php';
 
 $arr=[50,3,60,70,45,20,100,0,58];
 
-$heap=new heap();
+$heap=new Heap();
 foreach ($arr as $v){
     $heap->insert($v);
 }

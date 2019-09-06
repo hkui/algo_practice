@@ -1,4 +1,5 @@
 <?php
+namespace Algo_10_heap;
 
 class Heap
 {

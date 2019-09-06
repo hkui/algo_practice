@@ -2,7 +2,9 @@
 /**
  *2.动态数据集合求top n
  */
-require_once "Heap.php";
+namespace Algo_10_heap;
+
+require_once '../vendor/autoload.php';
 
 $static_data=[2,5,3,1,0,7,6,10];
 
