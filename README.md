@@ -26,6 +26,11 @@ Success belongs to the persevering!
  [单链表的基本操作(创建,删除特定节点,反转，lru,找中间节点,回文判断,是否有环，环长，总长度)](https://github.com/hkui/algo_practice/tree/master/php/04_linklist)
 ##### 栈
  [验证大小中括号是否成对闭合匹配](https://github.com/hkui/algo_practice/blob/master/md/04.%E5%A0%86%E6%A0%88/stack-%E9%AA%8C%E8%AF%81%E5%A4%A7%E5%B0%8F%E4%B8%AD%E6%8B%AC%E5%8F%B7%E6%98%AF%E5%90%A6%E6%88%90%E5%AF%B9%E9%97%AD%E5%90%88%E5%8C%B9%E9%85%8D.md)
+ ##### 堆
+ [堆基本操作，几种形式的堆化，堆排序](https://github.com/hkui/algo_practice/blob/master/md/04.%E5%A0%86%E6%A0%88/%E5%A0%86%E5%9F%BA%E6%9C%AC.md)    
+ [动态数据流求top k,动态数据流求中位数](https://github.com/hkui/algo_practice/blob/master/md/04.%E5%A0%86%E6%A0%88/%E5%A0%86%E5%AE%9E%E6%88%98.md)
+ 
+ 
  ##### 二分查找
  [基本二分查找](https://github.com/hkui/algo_practice/blob/master/md/03.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/%E5%9F%BA%E6%9C%AC%E4%BA%8C%E6%9C%AC%E6%9F%A5%E6%89%BE.md)  
  [变形二分查找](https://github.com/hkui/algo_practice/blob/master/md/03.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/%E5%8F%98%E5%BD%A2%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md)
