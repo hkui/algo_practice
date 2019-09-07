@@ -1,6 +1,10 @@
 <?php
-require_once 'tree.php';
-require_once 'node.php';
+namespace Algo_09_tree;
+
+require_once '../vendor/autoload.php';
+
+
+
 $tree=new Tree(20);
 $tree->insert(16);
 $tree->insert(30);

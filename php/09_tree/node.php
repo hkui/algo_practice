@@ -1,4 +1,5 @@
 <?php
+namespace Algo_09_tree;
 
 class Node
 {

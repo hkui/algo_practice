@@ -1,6 +1,5 @@
 <?php
-
-include "node.php";
+namespace Algo_09_tree;
 
 class Tree
 {
