@@ -44,9 +44,14 @@ class Sort
         return $arr;
     }
 
-    //归并
-    public static function mergeSort($arr)
+    //归并 递归
+    public static function mergeSort($arr,$startIndex,$endIndex)
     {
+        
+        return $arr;
+
+    }
+    public static function merge(){
 
     }
 
@@ -54,13 +59,60 @@ class Sort
     //选择
     public static function selectSort($arr)
     {
+        $len = count($arr);
+        for ($i = 0; $i < $len; $i++) {
+            $minIndex = $i;
+            for ($j = $i + 1; $j < $len; $j++) {
+                if ($arr[$j] < $arr[$minIndex]) {
+                    $minIndex = $j;
+                }
+            }
+            if ($minIndex != $i) {
+                $tmp = $arr[$i];
+                $arr[$i] = $arr[$minIndex];
+                $arr[$minIndex] = $tmp;
+            }
+        }
+        return $arr;
+
 
     }
 
     //插入
     public static function insertSort($arr)
     {
+        $len = count($arr);
+        for ($i = 1; $i < $len; $i++) {
+            $value = $arr[$i];
+
+            for ($j = $i - 1; $j >= 0; $j--) {
+                if ($value < $arr[$j]) {
+                    $arr[$j + 1] = $arr[$j];
+                } else {
+                    break;
+                }
+            }
+            $arr[$j + 1] = $value;
+
+        }
         return $arr;
+
+
+        /* $sorted=[];
+         while($head=array_shift($arr)){
+             $len=count($sorted);
+             for($i=$len-1;$i>=0;$i--){
+                 if($sorted[$i]>$head){
+                     $sorted[$i+1]=$sorted[$i];
+                 }else{
+                     break;
+                 }
+             }
+
+             $sorted[$i+1]=$head;
+
+         }
+         return $sorted;*/
     }
 
     //快排
@@ -92,7 +144,7 @@ class Sort
     {
         $arr = [];
         for ($i = 0; $i < $len; $i++) {
-            $arr[] = mt_rand(-1000, 1000);
+            $arr[] = mt_rand(-1000, 10000);
         }
         return $arr;
     }
