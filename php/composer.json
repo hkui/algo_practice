@@ -12,7 +12,8 @@
     "autoload": {
         "psr-4": {
             "Algo_09_tree\\":"09_tree/",
-            "Algo_10_heap\\":"10_heap/"
+            "Algo_10_heap\\":"10_heap/",
+            "Algo_05_sort\\":"05_sort/"
         }
     }
 }
