@@ -3,10 +3,10 @@ namespace Algo_05_sort;
 
 require_once '../vendor/autoload.php';
 
-$arr=Sort::randData(15);
-//$arr=[2,1,3,5,6,4,10,9];
+$arr=Sort::randData(10,-100,100);
+//$arr=[4,2,5,1,6,3];
 
 echo join(',',$arr);
-Sort::mergeSort($arr,0,count($arr)-1);
+Sort::quickSort($arr,0,count($arr)-1);
 echo PHP_EOL;
 echo join(',',$arr);
