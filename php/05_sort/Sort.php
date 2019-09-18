@@ -45,14 +45,25 @@ class Sort
     }
 
     //归并 递归
-    public static function mergeSort($arr,$startIndex,$endIndex)
+    public static function mergeSort(&$arr,$start,$end)
     {
-        
+        if($start>=$end){
+            return;
+        }
+
+        $mid=intval(($start+$end)/2);
+        echo $start."---".$mid."---".$end.PHP_EOL;
+        sleep(2);
+        self::mergeSort($arr,$start,$mid);
+        self::mergeSort($arr,$mid+1,$end);
+        self::merge($arr,$start,$end);
+
+
         return $arr;
 
     }
-    public static function merge(){
-
+    public static function merge(&$arr,$start,$end){
+        echo $start."----".$end.PHP_EOL;
     }
 
 
