@@ -1,10 +1,10 @@
 <?php
+
 namespace Algo_09_tree;
 
 class Tree
 {
     public $root;
-
     public function __construct($data)
     {
         $this->root = new Node($data);
@@ -30,12 +30,11 @@ class Tree
                     $cur->right = $dataNode;
                     return;
                 }
-
             }
         }
 
     }
-
+    //查找
     public function find($data)
     {
         $cur = $this->root;
@@ -127,33 +126,24 @@ class Tree
 
         //有1个叶子节点，左节点或者右节点
 
-
-
         //只有左子树
         if ($to_delete_node->left) {
-            $to_delete_child_node=$to_delete_node->left;
+            $to_delete_child_node = $to_delete_node->left;
 
-        }else{
+        } else {
             //只有右子树
-            $to_delete_child_node=$to_delete_node->right;
+            $to_delete_child_node = $to_delete_node->right;
         }
-        if(empty($to_delete_parent_node)){
-            $this->root=$to_delete_child_node;
-        }else{
-            if($left){
+        if (empty($to_delete_parent_node)) {
+            $this->root = $to_delete_child_node;
+        } else {
+            if ($left) {
                 $to_delete_parent_node->left = $to_delete_child_node;
-            }else{
+            } else {
                 $to_delete_parent_node->right = $to_delete_child_node;
             }
         }
-
-
-
-
-
     }
-
-
 
     //前序遍历
     public function preOrder($root)
@@ -165,7 +155,7 @@ class Tree
         }
     }
 
-//中序遍历
+    //中序遍历
     public function inOrder($root)
     {
         if ($root) {
@@ -175,7 +165,7 @@ class Tree
         }
     }
 
-//后序遍历
+    //后序遍历
     public function postOrder($root)
     {
         if ($root) {
@@ -185,7 +175,37 @@ class Tree
 
         }
     }
+
+    /**
+     * @param $queue
+     * @param int $index 从队列(数组)的那个位置开始处理
+     * 层级遍历
+     * 首先把节点放入数组，记录放入数组的根节点个数index，把节点的左右子放入数组
+     * 开始遍历数组queue(从index开始,子节点已经入队列的节点元素不再处理)，把左右子节点放入queue,index++
+     * 持续上述过程，当节点没有子节点时，入队列过程结束，queue里节点的顺序即为层级遍历元素节点的顺序
+     */
+    public function levelOrder(&$queue,$index=0){
+        $len=count($queue);
+        for($i=$index;$i<$len;$i++){
+            $node=$queue[$i];
+            if($node->left){
+                $queue[]=$node->left;
+            }else{
+                return;
+            }
+            if($node->right){
+                $queue[]=$node->right;
+            }else{
+                return ;
+            }
+        }
+        $index++;
+        $this->levelOrder($queue,$index);
+    }
 }
+
+
+
 
 
 
