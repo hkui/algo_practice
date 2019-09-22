@@ -37,7 +37,8 @@ Success belongs to the persevering!
  ##### 散列表
   [散列表(散列冲突)](https://github.com/hkui/algo_practice/blob/master/md/07.%E6%95%A3%E5%88%97%E8%A1%A8/04.%E6%95%A3%E5%88%97%E8%A1%A8.md)
   ##### 树
-  [二叉树基本](https://github.com/hkui/algo_practice/blob/master/md/06.tree/06.%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E6%9C%AC.md)       
+  [二叉树基本操作和前中后遍历](https://github.com/hkui/algo_practice/blob/master/md/06.tree/06.%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E6%9C%AC.md)     
+  [二叉树层级遍历](https://github.com/hkui/algo_practice/blob/master/md/06.tree/08.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E7%BA%A7%E9%81%8D%E5%8E%86)   
   [二叉查找树](https://github.com/hkui/algo_practice/blob/master/md/06.tree/07.%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91.md)     
   [2-3树 b树](https://github.com/hkui/algo_practice/blob/master/md/06.tree/B%E6%A0%91%202-3%E6%A0%91.md)     
   [红黑树演变](https://github.com/hkui/algo_practice/blob/master/md/06.tree/%E7%BA%A2%E9%BB%91%E6%A0%91%E8%A1%8D%E5%8F%98.md)
