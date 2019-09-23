@@ -198,8 +198,9 @@ class Tree
             }else{
                 return ;
             }
+            $index++;
         }
-        $index++;
+
         $this->levelOrder($queue,$index);
     }
 }
