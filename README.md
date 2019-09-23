@@ -24,6 +24,7 @@ Success belongs to the persevering!
 ### PHP
 ##### 链表
  [单链表的基本操作(创建,删除特定节点,反转，lru,找中间节点,回文判断,是否有环，环长，总长度)](https://github.com/hkui/algo_practice/tree/master/php/04_linklist)
+ - [ ] 跳表
 ##### 栈
  [验证大小中括号是否成对闭合匹配](https://github.com/hkui/algo_practice/blob/master/md/04.%E5%A0%86%E6%A0%88/stack-%E9%AA%8C%E8%AF%81%E5%A4%A7%E5%B0%8F%E4%B8%AD%E6%8B%AC%E5%8F%B7%E6%98%AF%E5%90%A6%E6%88%90%E5%AF%B9%E9%97%AD%E5%90%88%E5%8C%B9%E9%85%8D.md)
  ##### 堆
@@ -42,6 +43,8 @@ Success belongs to the persevering!
   [二叉查找树](https://github.com/hkui/algo_practice/blob/master/md/06.tree/07.%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91.md)     
   [2-3树 b树](https://github.com/hkui/algo_practice/blob/master/md/06.tree/B%E6%A0%91%202-3%E6%A0%91.md)     
   [红黑树演变](https://github.com/hkui/algo_practice/blob/master/md/06.tree/%E7%BA%A2%E9%BB%91%E6%A0%91%E8%A1%8D%E5%8F%98.md)
+- [ ] 红黑树
+
   
   
   
