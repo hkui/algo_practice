@@ -5,4 +5,4 @@
 * 3.在B+tree中，叶节点包含信息，所有非叶节点仅起到索引作用，非叶节点中的每个索引项只含有对应子树的最大关键字和指向该子树的指针，不含有该关键字对应记录的存储地址；              <br>而 在B+tree,叶节点包含了全部关键字，即在非叶节点中出现的关键字也会出现在叶节点中；而在B-tree，叶节点包含的关键字和其它节点包含的关键字是不重复的。
 * 4.在B+tree里，有1个指针指向关键字最小的叶子节点，所有叶子节点连接成1个单链表
 
-![](https://note.youdao.com/yws/api/personal/file/2651B5340E804C019458255B40A63909?method=download&shareKey=fb340970ec7ec2e2d5b3fb979a6b062a)
+![](https://note.youdao.com/yws/api/personal/file/DB26584EC31F4D63A01AA7BF03CC4051?method=download&shareKey=528ec4c45d3a01209326d28d788e251f)
