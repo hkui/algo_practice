@@ -1,7 +1,6 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: huangkui@lepu.cn
  * Date: 2019/11/20
  * Time: 9:06
  */
@@ -21,7 +20,6 @@ class Solution {
         }
         
        $revertnum=0;
-
        while($x>$revertnum){
             $pop=$x%10;
             $x=intval($x/10);

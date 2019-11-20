@@ -1,7 +1,6 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: huangkui@lepu.cn
  * Date: 2019/11/20
  * Time: 9:06
  */
