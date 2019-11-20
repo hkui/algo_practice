@@ -9,16 +9,12 @@ function reverse($x) {
 		$x=intval($x/10);
 		if ($rev > $max/10 || ($rev == $max / 10 && $pop > 7)) return 0;
         if ($rev < $min/10 || ($rev == $min / 10 && $pop < -8)) return 0;
-
-
-		
 		
 		$rev=$rev*10+$pop;
+		echo $rev.",".$pop.','.$x.PHP_EOL;
 		
 	}
-	return $rev;
-	
-       
+	return $rev;    
 }
 
 echo reverse(-123);
