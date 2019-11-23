@@ -1,8 +1,5 @@
 <?php
 
-var_dump(stripos("flight", "flo"));
-
-
 function longestCommonPrefix($strs) {
    $prefix='';	
    $first=$strs[0];
