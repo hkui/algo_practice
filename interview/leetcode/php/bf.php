@@ -1,5 +1,5 @@
 <?php
-//字符串匹配bf算法 暴力破解法
+//BF 算法中的 BF 是 Brute Force 的缩写，中文叫作暴力匹配算法，也叫朴素匹配算法
 class Solution{
 	function strStr($haystack,$needle){
 		$len1=strlen($haystack);
