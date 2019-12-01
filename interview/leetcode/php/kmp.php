@@ -4,7 +4,16 @@ class Solution{
 	public function strStr($haystack,$needle){
 		$len1=strlen($haystack);
 		$len2=strlen($needle);
+		if($len2==0){
+			return 0;
+		}
+		if($len1<$len2){
+			return -1;
+		}
 		$nextArr=$this->nextArr($needle);
+		print_r($nextArr);die;
+	
+
 		$index=-1;
 		$j=0;
 		$i=0;
@@ -17,7 +26,6 @@ class Solution{
 				}
 				$i++;
 			}else{
-				
 				if($j>0){
 					$move=$j-$nextArr[$j-1];
 				}else{
@@ -29,6 +37,9 @@ class Solution{
 					$i++;
 				}
 				$index=-1;
+				if($i+$len2>$len1){
+					return -1;
+				}	
 			}
 		}
 		if($j<=$len2){
@@ -36,28 +47,24 @@ class Solution{
 		}
 		return $index;
 	}
+	
 	public function next($str){
-		$left=[];
-		$right=[];
-		$common_len=0;
 		$len=strlen($str);
-		$tmp='';
-		for($i=0;$i<$len-1;$i++){
-			$tmp.=$str[$i];
-			$left[$tmp]=1;
-		}
-
-		$tmp='';
-		for($j=$len-1;$j>0;$j--){
-			$tmp=$str[$j].$tmp;
-
-			$right[$tmp]=1;
-			if(isset($left[$tmp])){
-				$common_len=strlen($tmp);
+		$compareLen=intval($len/2);
+		$leftStr='';
+		$rightStr='';
+		$commonLen=0;
+		$i=0;
+		while($i<$compareLen){
+			$leftStr.=$str[$i];
+			$rightStr=$str[$len-$i-1].$rightStr;
+			if($leftStr==$rightStr){
+				$commonLen=$i+1;
 			}
+			$i++;
 		}
-		return $common_len;
-		
+		return $commonLen;
+
 	}
 	public function nextArr($str){
 		$arr=[];
@@ -72,18 +79,25 @@ class Solution{
 }
 
 
-$str="ABCDABD";
+
 $s=new Solution();
 $tests=[
-	["abcdef","de",3], 
-	["abcdef","b",1],
-	["abcdef","deg",-1],
-	["hello","ll",2],
-	["mississippi","issip",4],
-	["mississippi","issipi",-1],
+	// ["abcdef","de",3], 
+	// ["abcdef","b",1],
+	// ["abcdef","deg",-1],
+	// ["hello","ll",2],
+	// ["mississippi","issip",4],
+	// ["mississippi","issipi",-1],
+	[file_get_contents('./data/haystack'),file_get_contents('./data/needle'),-1]
 ];
+// $r=$s->nextArr('de');
+// print_r($r);
+// die;
+
+
+
 foreach ($tests as $v) {
-	echo $s->strStr($v[0],$v[1]).PHP_EOL;
+	var_dump($s->strStr($v[0],$v[1])==$v[2]);
 }
 
 
