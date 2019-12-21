@@ -37,6 +37,7 @@ class Solution{
 					$i++;
 				}
 				$index=-1;
+				
 				if($i+$len2>$len1){
 					return -1;
 				}	
