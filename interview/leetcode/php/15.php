@@ -6,12 +6,6 @@ https://leetcode-cn.com/problems/3sum/
  */
 class Solution {
 
-    /**
-     * @param Integer[] $nums
-     * @return Integer[][]
-     *
-     * 暴力破解
-     */
     function threeSum($nums) {
         $len=count($nums);
         if($len<3){
@@ -20,9 +14,7 @@ class Solution {
         $len=count($nums);
         sort($nums);
         echo join(',',$nums).PHP_EOL;
-        echo PHP_EOL;
         $ret=[];
-        $right=$len-1;
 
         for($i=0;$i<$len;$i++){
             if($nums[$i]>0){
@@ -32,21 +24,21 @@ class Solution {
                 continue;
             }
             $left=$i+1;
+            $right=$len-1;
             while($left<$right){
-
                 $sum=$nums[$i]+$nums[$left]+$nums[$right];
-                echo "i=".$i."  left=".$left."  right=".$right."              ".$nums[$i].",".$nums[$left].",".$nums[$right]."=".$sum.PHP_EOL;
+                echo "i=".$i."  left=".$left."  right=".$right."            ".$nums[$i].",".$nums[$left].",".$nums[$right]."=".$sum.PHP_EOL;
                 if($sum == 0){
-                    if(  $left>$i+1 && $nums[$left] ==$nums[$left-1]){
-                        $left++;
-                        continue;
-                    }
-                    if( $right<$len-1 && $nums[$right] ==$nums[$right+1] ){
-                        $right--;
-                        continue;
-                    }
                     $ret[]=[$nums[$i],$nums[$left],$nums[$right]];
+                    while($left<$right && $nums[$left]==$nums[$left+1]){
+                        $left++;
+                    }
+                    while($left<$right && $nums[$right]==$nums[$right-1]){
+                        $right--;
+                    }
                     $left++;
+                    $right--;
+
                 }elseif ($sum<0){
                     $left++;
                 }else{
@@ -61,17 +53,21 @@ class Solution {
 
 $so=new Solution();
 
-;
 $tests=[
 //    [-1,0,1,2,-1,-4],
 //    [0,0,0,0],
-    [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6],//[[-4,-2,6],[-4,0,4],[-4,1,3],[-4,2,2],[-2,-2,4],[-2,0,2]] 现在缺了 -2,-2,4
+    [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6],//[[-4,-2,6],[-4,0,4],[-4,1,3],[-4,2,2],[-2,-2,4],[-2,0,2]]
 
 ];
 foreach ($tests as $nums){
     $r=$so->threeSum($nums);
 
-    print_r($r);
+    print_r(d($r));
 }
-
+function d($arr){
+    foreach ($arr as $k=>$v){
+        $arr[$k]=implode(' ',$v);
+    }
+    return $arr;
+}
 
