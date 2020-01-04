@@ -13,7 +13,6 @@ class Solution
         '8' => ['t', 'u', 'v'],
         '9' => ['w', 'x', 'y', 'z']
     ];
-
     /**
      * @param String $digits
      * @return String[]
@@ -28,8 +27,7 @@ class Solution
     }
     public function bt($combine,$nextDigits){
         if(strlen($nextDigits)==0){
-            array_push($this->ret,$combine);
-            return $combine;
+            $this->ret=$combine;
         }else{
             $arr=$this->lookup[substr($nextDigits,0,1)];
 
@@ -42,16 +40,14 @@ class Solution
                 }else{
                     $newCombile[]=$v0;
                 }
-
             }
 
-            //echo print_r($arr,1)."--".print_r($combine,1)."--".print_r($newCombile,1).PHP_EOL;
             $this->bt($newCombile,substr($nextDigits,1));
         }
 
     }
 }
-$digits='23';
+$digits='27';
 $so=new Solution();
 
 $r=$so->letterCombinations($digits);
