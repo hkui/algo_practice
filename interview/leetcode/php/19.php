@@ -4,7 +4,7 @@
  *  https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
  * */
 
-
+include 'include/common.php';
 
 class Solution
 {
@@ -34,30 +34,8 @@ class Solution
     }
 }
 
-class ListNode
-{
-    public $val = 0;
-    public $next = null;
-
-    function __construct($val)
-    {
-        $this->val = $val;
-    }
-}
-
-function createNodeList($arr){
-    $head=new ListNode(null);
-
-    $cur=$head;
-    foreach ($arr as $v){
-        $node=new ListNode($v);
-        $cur->next=$node;
-        $cur=$cur->next;
 
 
-    }
-    return $head->next;
-}
 $arr=["a","b","c","d",'e','f','g','h'];
 $nodeList=createNodeList($arr);
 
