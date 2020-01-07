@@ -26,7 +26,6 @@ class Solution
 
             $parent=$cur;
             $cur=$cur->next;
-
         }
         return $head;
     }
