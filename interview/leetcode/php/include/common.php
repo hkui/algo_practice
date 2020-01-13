@@ -30,3 +30,12 @@ function createNodeList($arr){
     }
     return $head->next;
 }
+
+function nodesShow($node){
+    $str='';
+    while($node){
+        $str.=$node->val.'=>';
+        $node=$node->next;
+    }
+    return trim($str,'=>');
+}
