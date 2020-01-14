@@ -68,7 +68,7 @@ $lists=[
     createNodeList([1,3]),
     createNodeList([-1]),
     createNodeList([2,6]),
-//    createNodeList([3,7]),
+    createNodeList([3,7]),
 ];
 
 
