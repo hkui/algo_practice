@@ -6,31 +6,35 @@
 
 /**
  * Definition for a binary tree node.
- * 二叉树中序遍历，递归法
+ * 二叉树中序遍历，栈 最快
  *
  */
+
+
 include '../include/common.php';
 class Solution {
-    public $ret=[];
 
     /**
      * @param TreeNode $root
      * @return Integer[]
      */
     function inorderTraversal($root) {
-        $this->order($root);
-        return $this->ret;
-    }
-    function order( $root ){
-        if($root->left){
-            $this->order($root->left);
-        }
-        $this->ret[]= $root->val;
-        if($root->right){
-            $this->order($root->right);
-        }
+        $res=[];
+        $stack=[];
+        $cur=$root;
+        while($cur ||!empty($stack)){
+            while ($cur){
+                array_push($stack,$cur);
+                $cur=$cur->left;
+            }
+            $cur=array_pop($stack);
 
+            $res[]=$cur->val;
+            $cur=$cur->right;
+        }
+        return $res;
     }
+
 
 }
 

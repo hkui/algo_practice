@@ -13,7 +13,6 @@
 
 include '../include/common.php';
 class Solution {
-    public $ret=[];
 
     /**
      * @param TreeNode $root
@@ -22,7 +21,23 @@ class Solution {
     function inorderTraversal($root) {
         $white=0;
         $gray=1;
-        $stack=[];
+        $stack=[[$white,$root]];
+        $res=[];
+        while($stack){
+            list($color,$node)=array_pop($stack);
+            if(empty($node)) continue;
+
+            if($color== $white){
+                array_push($stack,[$white,$node->right]);
+                array_push($stack,[$gray,$node]);
+                array_push($stack,[$white,$node->left]);
+            }else{
+                $res[]=$node->val;
+            }
+        }
+
+        return $res;
+
     }
 
 
@@ -60,7 +75,6 @@ $treenode5->right=$treenode11;
 $treenode6->left=$treenode12;
 
 $so=new Solution();
-print_r($treenode1);
 
 $r=$so->inorderTraversal($treenode1);
 print_r($r);
