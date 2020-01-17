@@ -17,25 +17,39 @@ class ListNode
     }
 }
 
-function createNodeList($arr){
-    $head=new ListNode(null);
+function createNodeList($arr)
+{
+    $head = new ListNode(null);
 
-    $cur=$head;
-    foreach ($arr as $v){
-        $node=new ListNode($v);
-        $cur->next=$node;
-        $cur=$cur->next;
+    $cur = $head;
+    foreach ($arr as $v) {
+        $node = new ListNode($v);
+        $cur->next = $node;
+        $cur = $cur->next;
 
 
     }
     return $head->next;
 }
 
-function nodesShow($node){
-    $str='';
-    while($node){
-        $str.=$node->val.'=>';
-        $node=$node->next;
+class TreeNode
+{
+    public $val = null;
+    public $left = null;
+    public $right = null;
+
+    function __construct($value)
+    {
+        $this->val = $value;
     }
-    return trim($str,'=>');
+}
+
+function nodesShow($node)
+{
+    $str = '';
+    while ($node) {
+        $str .= $node->val . '=>';
+        $node = $node->next;
+    }
+    return trim($str, '=>');
 }
