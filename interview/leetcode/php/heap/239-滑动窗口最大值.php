@@ -13,7 +13,6 @@
 class Solution
 {
     public $dequeue = [];
-
     /**
      * @param Integer[] $nums
      * @param Integer $k
@@ -34,7 +33,6 @@ class Solution
         }
         return $res;
     }
-
     public function pushDequeue($val)
     {
 
@@ -42,7 +40,6 @@ class Solution
             array_pop($this->dequeue);
         }
         array_push($this->dequeue, $val);
-
     }
 
     public function popDequeue($val)
@@ -51,7 +48,6 @@ class Solution
             array_shift($this->dequeue);
         }
     }
-
     public function max()
     {
         return $this->dequeue[0];
