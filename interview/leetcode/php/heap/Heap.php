@@ -128,6 +128,57 @@ class Heap
     }
 
     /**
+     * 大顶堆 从根开始堆化
+     *
+     */
+    public function heapBigFirst(){
+        $first=1;
+        while(true){
+            $left=2*$first;
+            $right=$left+1;
+            if($this->count>=$right){
+                if($this->dataArr[$left]>$this->dataArr[$right]){
+                    $bigPos=$left;
+                }else{
+                    $bigPos=$right;
+                }
+            }elseif ($this->count>=$left && $this->count<$right){
+                $bigPos=$left;
+            }else{
+                break;
+            }
+
+            if($this->dataArr[$bigPos]>$this->dataArr[$first]){
+                $tmp=$this->dataArr[$first];
+                $this->dataArr[$first]=$this->dataArr[$bigPos];
+                $this->dataArr[$bigPos]=$tmp;
+
+                $first=$bigPos;
+            }else{
+                break;
+            }
+        }
+    }
+
+    /**
+     * 删除堆顶元素，拿把最后1个元素放到堆顶，开始堆化
+     *
+     */
+    public function deleteFirst(){
+        $first=$this->dataArr[1];
+        $last=array_pop($this->dataArr);
+        $this->count--;
+        $this->dataArr[1]=$last;
+        if($this->type){
+            $this->heapSmallFirst();
+        }else{
+            $this->heapBigFirst();
+        }
+        return $first;
+    }
+
+
+    /**
      * 第k大的元素
      */
     public function topK(){
