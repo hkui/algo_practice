@@ -95,10 +95,15 @@ class Heap
             }else{
                 break;
             }
-            $tmp=$this->dataArr[$first];
-            $this->dataArr[$first]=$this->dataArr[$smallPos];
-            $this->dataArr[$smallPos]=$tmp;
-            $first=$leftPos;
+            if($this->dataArr[$first]>$this->dataArr[$smallPos]){
+                $tmp=$this->dataArr[$first];
+                $this->dataArr[$first]=$this->dataArr[$smallPos];
+                $this->dataArr[$smallPos]=$tmp;
+                $first=$leftPos;
+            }else{
+                break;
+            }
+
         }
 
     }
