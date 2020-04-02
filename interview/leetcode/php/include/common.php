@@ -53,3 +53,39 @@ function nodesShow($node)
     }
     return trim($str, '=>');
 }
+
+/**
+ * @param $arr
+ * 根据数组创建对应的树，省得每次测试时得费力创建
+ */
+function createTreesByArr($arr)
+{
+    if (empty($arr)) {
+        return null;
+    }
+    $root = new TreeNode(array_shift($arr));
+    $treeArr = [$root];
+
+    while ($treeArr) {
+        $nowNode = array_shift($treeArr);
+        if (!isset($nowNode->left) && !empty($arr)) {
+            $v = array_shift($arr);
+
+            if (!is_null($v)) {
+                $node = new TreeNode($v);
+                $nowNode->left = $node;
+                array_push($treeArr, $node);
+            }
+        }
+        if (!isset($nowNode->right) && !empty($arr)) {
+            $v = array_shift($arr);
+            if (!is_null($v)) {
+                $node = new TreeNode($v);
+                $nowNode->right = $node;
+                array_push($treeArr, $node);
+            }
+
+        }
+    }
+    return $root;
+}
