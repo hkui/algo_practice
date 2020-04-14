@@ -40,9 +40,6 @@ class Solution {
 //            $levelArr[$level][]=$step;
 
 
-            //记录是否加入过队列
-            //$queueExists[$current]=1;
-
             if ($current == $endWord) {
                 if(empty($ret)){
                     $ret[]=$step;
@@ -129,29 +126,6 @@ class Solution {
                 }
             }
 
-          /*  $lastLen=strlen($last);
-
-            for ($i = 0; $i < $lastLen; $i++) {
-                $news = $last;
-
-                for ($k = ord('a'); $k <= ord('z'); $k++) {
-                    $news[$i] = chr($k);
-
-                    if (isset($wordList[$news])) {
-                        $newpath = $path;
-
-                        $newpath[] = $news;
-                        $visited[$news] = true;
-                        if ($news == $endWord) {
-                            $min_level = $level;
-                            $ans[] = $newpath;
-                        } else {
-                            $paths[] = $newpath;
-                        }
-                    }
-
-                }
-            }*/
         }
         return $ans;
     }
@@ -174,7 +148,53 @@ class Solution {
         }
         return $ret;
     }
+
+    /**
+     * @param $beginWord
+     * @param $endWord
+     * @param $wordList
+     * 自己写一遍
+     */
     function findLadders2($beginWord, $endWord, $wordList) {
+        $shortPaths=[];
+
+        $wordList=array_flip($wordList);//键值交换查找时更快 0(1)>O(n)
+        $level=-1;
+
+        $paths=[[$beginWord]]; //要搜索的路径
+        $min_level=0;
+
+        $visited=[]; //处理过的元素记录在这里面
+        while($paths){
+            $path=array_shift($paths);
+            //不是最开始的时候，而且开始处理下一层level的数据
+            if($level>0 && count($path)>$level){
+                foreach ($visited as $v){
+                    unset($wordList[$v]);
+                }
+                $level=count($path);
+
+            }
+            $last=end($path);
+
+            $lastNexts=$this->findDiffs($last,$wordList);
+            foreach ($lastNexts as $nextWord){
+                $visited[]=$nextWord;
+                $newPath=array_merge($path,[$nextWord]); //接上新的单词后 路变长了
+                if($nextWord==$endWord){
+                    $shortPaths[]=$newPath;
+                    $min_level=$level;
+                }else{
+                    //加入新路径 ，待后续处理
+                    $paths[]=$newPath;
+                }
+
+            }
+
+
+
+        }
+
 
 
     }
