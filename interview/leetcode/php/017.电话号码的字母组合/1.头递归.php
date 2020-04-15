@@ -23,13 +23,22 @@ class Solution
             $this->bt([], $digits);
         return $this->ret;
 
-
     }
+
+    /**
+     * @param $combine
+     * @param $nextDigits
+     *
+     *
+     */
     public function bt($combine,$nextDigits){
+        echo print_r($combine,1)."--".$nextDigits.PHP_EOL;
         if(strlen($nextDigits)==0){
             $this->ret=$combine;
         }else{
+            //取出第一个数字的字母数组 比如[a,b,c]
             $arr=$this->lookup[substr($nextDigits,0,1)];
+
 
             $newCombile=[];
             foreach ($arr as $v0){
@@ -47,7 +56,7 @@ class Solution
 
     }
 }
-$digits='27';
+$digits='234';
 $so=new Solution();
 
 $r=$so->letterCombinations($digits);
