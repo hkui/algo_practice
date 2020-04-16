@@ -49,14 +49,36 @@ class WordDictionary {
      * @return Boolean
      */
     function search($word) {
+        $node=$this->root;
+        $len=strlen($word);
+        for($i=0;$i<$len;$i++){
+            $w=$word[$i];
+            if($w=='.'){
+                if($node->isEnd){
+                    return false;
+                }
+                //多条路选1个
+                $node=current($node->children);
+                print_r($node);
+
+            }else if(!isset($node->children[$w])){
+                return false;
+            }else{
+                $node=$node->children[$w];
+            }
+        }
+        return true;
 
     }
 }
 
 $w=new WordDictionary();
-$w->addWord('tee');
-$w->addWord('ta');
+$w->addWord('cef');
+$w->addWord('bad');
+$w->addWord('dad');
+$w->addWord('mad');
 
-print_r($w->root);
+$r=$w->search('.ad');
+var_dump($r);
 
 
