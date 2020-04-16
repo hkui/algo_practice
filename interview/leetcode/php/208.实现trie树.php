@@ -26,7 +26,6 @@ class Trie {
         $this->root=new TireNode();
 
     }
-
     /**
      * Inserts a word into the trie.
      * @param String $word
@@ -34,18 +33,16 @@ class Trie {
      */
     function insert($word) {
         $node=$this->root;
-
+        $len=strlen($word);
         for($i=0;$i<$len;$i++){
-            $one=$word[$i];
-            $path[$one]=$one;
-            if(!isset($cur[$one])){
-                $cur[$one]=$path;
-            }else{
-
+            $w=$word[$i];
+            //没在，这层加进去
+            if(!isset($node->children[$w])){
+                $node->children[$w]=new TireNode($w);
             }
-
+            $node=$node->children[$w];
         }
-
+        $node->isEnd=true;
     }
 
     /**
@@ -54,7 +51,19 @@ class Trie {
      * @return Boolean
      */
     function search($word) {
-
+        $node=$this->root;
+        $len=strlen($word);
+        for($i=0;$i<$len;$i++){
+            $w=$word[$i];
+            if(!isset($node->children[$w])){
+                return false;
+            }
+            $node=$node->children[$w];
+        }
+        if($node->isEnd){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -63,18 +72,30 @@ class Trie {
      * @return Boolean
      */
     function startsWith($prefix) {
-
+        $word=$prefix;
+        $node=$this->root;
+        $len=strlen($word);
+        for($i=0;$i<$len;$i++){
+            $w=$word[$i];
+            if(!isset($node->children[$w])){
+                return false;
+            }
+            $node=$node->children[$w];
+        }
+        return true;
     }
 }
 
-/**
- * Your Trie object will be instantiated and called as such:
- * $obj = Trie();
- * $obj->insert($word);
- * $ret_2 = $obj->search($word);
- * $ret_3 = $obj->startsWith($prefix);
- */
 $obj = new Trie();
 $word='tea';
 $obj->insert($word);
-print_r($obj->root);
+$obj->insert('to');
+$obj->insert('tee');
+$obj->insert('hk');
+
+$r=$obj->startsWith('h');
+var_dump($r);
+
+
+
+//print_r($obj->root);
