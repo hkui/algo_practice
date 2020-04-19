@@ -31,6 +31,9 @@ class WordDictionary {
      * @return NULL
      */
     function addWord($word) {
+        if(empty($word)){
+            return;
+        }
         $node=$this->root;
         $len=strlen($word);
         for($i=0;$i<$len;$i++){
@@ -44,41 +47,83 @@ class WordDictionary {
     }
 
     /**
-     * Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
      * @param String $word
      * @return Boolean
      */
     function search($word) {
-        $node=$this->root;
+        return $this->searchOneRoad($this->root,$word);
+    }
+
+    public function searchOneRoad(TireNode $node ,$word){
         $len=strlen($word);
         for($i=0;$i<$len;$i++){
             $w=$word[$i];
             if($w=='.'){
-                if($node->isEnd){
-                    return false;
+                //查找每条路
+                foreach ($node->children as $childNode){
+                    $r=$this->searchOneRoad($childNode,substr($word,$i+1));
+                    if(!$r){
+                        continue;
+                    }else{
+                        return true;
+                    }
                 }
-                //多条路选1个
-                $node=current($node->children);
-                print_r($node);
+                return false;
 
-            }else if(!isset($node->children[$w])){
+            }elseif (!isset($node->children[$w])){
+                //这条路已经走完了
                 return false;
             }else{
+                //顺着这条路继续走下去
                 $node=$node->children[$w];
             }
         }
-        return true;
+        //都到结尾了
+        if($node->isEnd){
+            return true;
+        }
+        return false;
 
     }
 }
 
 $w=new WordDictionary();
-$w->addWord('cef');
-$w->addWord('bad');
-$w->addWord('dad');
-$w->addWord('mad');
 
-$r=$w->search('.ad');
-var_dump($r);
+$tests=[
+    ['addWord','at'],
+    ['addWord','and'],
+    ['addWord','an'],
+//    ['addWord','add'],
+
+    ['search','..'],
+
+];
+
+foreach ($tests as $t){
+    $r=call_user_func([$w,$t[0]],$t[1]);
+    var_dump($r);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
