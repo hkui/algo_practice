@@ -13,10 +13,11 @@ class Solution {
         }
         $len=count($nums);
         sort($nums);
-        echo join(',',$nums).PHP_EOL;
+        #echo join(',',$nums).PHP_EOL;
         $ret=[];
 
         for($i=0;$i<$len;$i++){
+
             if($nums[$i]>0){
                 return $ret;
             }

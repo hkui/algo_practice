@@ -18,13 +18,12 @@ class SNode{
 
 }
 class Skiplist {
-    public $indexLevel;
+    public $indexLevel=16;
 
     public $head;
     /**
      */
-    function __construct($indexLevel) {
-        $this->indexLevel=max($indexLevel,0);
+    function __construct() {
         $this->head=new SNode();
     }
 
@@ -54,7 +53,7 @@ class Skiplist {
              $level>=0;
              $level--
         ){
-
+            echo $level.PHP_EOL;
             while(isset($node->next[$level]) && $num<$node->next[$level]->data){
                 $node=$node->next[$level];
             }
@@ -63,6 +62,7 @@ class Skiplist {
             }
             $node->next[$level]=$newNode;
         }
+
         return $newNode;
 
 
@@ -89,6 +89,7 @@ class Skiplist {
 
     protected function getRandomLevel()
     {
+        mt_srand();
         return mt_rand(0, $this->indexLevel);
     }
 }
@@ -97,8 +98,7 @@ $indexLevel = 2;
 
 $skipList = new SkipList($indexLevel);
 
-for ($i = 3; $i >= 0; $i--) {
+for ($i = 5; $i >= 0; $i--) {
     $skipList->add($i);
 }
 print_r($skipList->head);
-var_dump($skipList->search(6));
