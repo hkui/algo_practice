@@ -17,7 +17,6 @@ class Solution {
         $ret=[];
 
         for($i=0;$i<$len;$i++){
-
             if($nums[$i]>0){
                 return $ret;
             }
@@ -28,7 +27,7 @@ class Solution {
             $right=$len-1;
             while($left<$right){
                 $sum=$nums[$i]+$nums[$left]+$nums[$right];
-                echo "i=".$i."  left=".$left."  right=".$right."            ".$nums[$i].",".$nums[$left].",".$nums[$right]."=".$sum.PHP_EOL;
+                #echo "i=".$i."  left=".$left."  right=".$right."            ".$nums[$i].",".$nums[$left].",".$nums[$right]."=".$sum.PHP_EOL;
                 if($sum == 0){
                     $ret[]=[$nums[$i],$nums[$left],$nums[$right]];
                     while($left<$right && $nums[$left]==$nums[$left+1]){
