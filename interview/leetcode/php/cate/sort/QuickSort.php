@@ -50,22 +50,35 @@ function quickSort(&$arr,$p,$r){
 function partition1(&$arr,$left,$right){
     $privot=$arr[$right];
 
-    while($left<=$right){
-        if($arr[$left]<$privot){
+    while($left<$right) {
+
+        while($arr[$left]<$privot && $left<$right){
             $left++;
-        }elseif ($arr[$left]>$privot){
-            $arr[$left]=$arr[$right];
+        }
+        if($arr[$left]>$privot  && $left<$right){
+            $arr[$right]=$arr[$left];
             $right--;
         }
+        while($arr[$right]>$privot && $left<$right){
+            $right--;
+        }
+        if($arr[$right]<$privot  && $left<$right){
+            $arr[$left]=$arr[$right];
+            $left++;
+        }
     }
+    $arr[$left]=$privot;
 
 }
 
-
-
-
-
 $arr= [4,2,5,1,6,3];
+//$arr=[3,1,4,6,7,8];
+$arr=[4,3,2,1];
+
+
+partition1($arr,0,count($arr)-1);
+
+print_r($arr);die;
 //$arr=[1,2,3,4,5,6];
 //$arr=[6,5,4,3,1,2];
 
