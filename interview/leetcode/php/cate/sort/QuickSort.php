@@ -47,6 +47,20 @@ function quickSort(&$arr,$p,$r){
     quickSort($arr,$i+1,$r);
 }
 
+function partition1(&$arr,$left,$right){
+    $privot=$arr[$right];
+
+    while($left<=$right){
+        if($arr[$left]<$privot){
+            $left++;
+        }elseif ($arr[$left]>$privot){
+            $arr[$left]=$arr[$right];
+            $right--;
+        }
+    }
+
+}
+
 
 
 
