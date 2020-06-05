@@ -42,7 +42,7 @@ function quickSort(&$arr,$p,$r){
     if($p>=$r){
         return ;
     }
-    $i=partition($arr,$p,$r);
+    $i=partition1($arr,$p,$r);
     quickSort($arr,$p,$i-1);
     quickSort($arr,$i+1,$r);
 }
@@ -68,19 +68,18 @@ function partition1(&$arr,$left,$right){
         }
     }
     $arr[$left]=$privot;
+    return $left;
 
 }
 
 $arr= [4,2,5,1,6,3];
-//$arr=[3,1,4,6,7,8];
-$arr=[4,3,2,1];
 
 
-partition1($arr,0,count($arr)-1);
 
-print_r($arr);die;
-//$arr=[1,2,3,4,5,6];
-//$arr=[6,5,4,3,1,2];
+//partition1($arr,0,count($arr)-1);
+//
+//print_r($arr);die;
+
 
 
 quickSort($arr,0,count($arr)-1);

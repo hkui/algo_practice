@@ -8,7 +8,7 @@
  */
 
 
-function BubbleSort($arr)
+function bubbleSort($arr)
 {
     $len = count($arr);
     while ($len > 1) {
@@ -38,5 +38,5 @@ $tests = [
 
 ];
 foreach ($tests as $t) {
-    echo join(',', $t) . "->" . join(',', BubbleSort($t)) . PHP_EOL;
+    echo join(',', $t) . "->" . join(',', bubbleSort($t)) . PHP_EOL;
 }
