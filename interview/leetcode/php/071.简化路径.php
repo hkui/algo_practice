@@ -12,7 +12,6 @@ class Solution {
      * @return String
      */
     function simplifyPath($path) {
-        $path=trim($path,"/");
         $stack=[];
         $path_arr=explode('/',$path);
         $path_arr=array_filter($path_arr);
@@ -21,9 +20,7 @@ class Solution {
             if($s=='.'){
                 continue;
             }elseif ($s=='..'){
-                if(!empty($stack)){
-                    array_pop($stack);
-                }
+                array_pop($stack);
             }else{
                 array_push($stack,$s);
             }

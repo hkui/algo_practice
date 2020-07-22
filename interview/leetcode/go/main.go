@@ -6,7 +6,18 @@ import (
 )
 
 func main() {
-	test:="()[])"
-	res:=algo.Algo20_isValid(test)
-	fmt.Printf("%v\n",res)
+
+	tests:=[]string{
+		"/home/",
+		"/../",
+		"/home//foo/",
+		"/a/./b/../../c/",
+		"/a/../../b/../c//.//",
+		"/a//b////c/d//././/..",
+	}
+	for _,s:=range tests{
+		fmt.Println(algo.Algo71_simplifyPath(s))
+	}
+
+
 }
