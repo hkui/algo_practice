@@ -18,9 +18,8 @@ class Solution {
 		    $another=$target-$v;
 		    if(isset($set[$another])){
 		    	return [$set[$another],$k];
-		    }else{
-		    	$set[$v]=$k;
 		    }
+            $set[$v]=$k;
 
 		}
     }
