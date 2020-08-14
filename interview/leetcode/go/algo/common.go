@@ -5,8 +5,8 @@ func CreateNodeList(arr []int)(*ListNode){
 	head:=&ListNode{}
 
 	cur:=head
-	len:=len(arr)
-	for i:=0;i<len;i++{
+	count:=len(arr)
+	for i:=0;i<count;i++{
 		node:=ListNode{Val:arr[i]}
 		cur.Next=&node
 		cur=cur.Next
@@ -15,3 +15,8 @@ func CreateNodeList(arr []int)(*ListNode){
 	return head
 }
 
+func SwapIntArr(arr []int,i int,j int)  {
+	tmp:=arr[i]
+	arr[i]=arr[j]
+	arr[j]=tmp
+}

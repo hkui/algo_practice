@@ -4,13 +4,7 @@
 采用递归方式的合并
 */
 
-class ListNode {
-     public $val = 0;
-     public $next = null;
-     function __construct($val) { 
-     	$this->val = $val; 
-     }
-  }
+include "include/common.php";
 
  $l1=new ListNode(1);
  $l1->next=new ListNode(3);

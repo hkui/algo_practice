@@ -5,6 +5,7 @@
  *
  *
  */
+include "include/common.php";
 
 
 class Solution
@@ -56,16 +57,6 @@ class Solution
 }
 
 
-class ListNode
-{
-    public $val = 0;
-    public $next = null;
-
-    function __construct($val)
-    {
-        $this->val = $val;
-    }
-}
 
 $l1 = new ListNode(2);
 $l1->next = new ListNode(4);

@@ -14,8 +14,11 @@ class Solution
      * @param ListNode $head
      * @return ListNode
      */
-    function swapPairs($head)
+    function swapPairs($lists)
     {
+        $head=new ListNode(null);
+        $head->next=$lists;
+
         $parent=$head;
         $cur=$parent->next;
         while($cur && $cur->next){
@@ -27,16 +30,15 @@ class Solution
             $parent=$cur;
             $cur=$cur->next;
         }
-        return $head;
+        return $head->next;
     }
 }
 
 $lists=createNodeList([1,2,3,4]);
-$head=new ListNode(null);
-$head->next=$lists;
+
 
 
 $so=new Solution();
-$r=$so->swapPairs($head);
+$r=$so->swapPairs($lists);
 print_r($r);
 
