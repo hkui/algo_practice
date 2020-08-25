@@ -14,7 +14,6 @@
  */
 
 function sortK($strArr,$k=1){
-    $ret=[];
     $dict=[];
     foreach ($strArr as $v){
         if(!isset($dict[$v])){
@@ -23,14 +22,27 @@ function sortK($strArr,$k=1){
             $dict[$v]++;
         }
     }
-    print_r($dict);
+    $sortArr=[];
+
     arsort($dict);
-    print_r($dict);
-    
-    return array_slice($dict, 0, $k);
+    $sort=1;
+    foreach ($dict as $num=>$cnt){
+        if($sort>$k){
+            break;
+        }
+        $sortArr[$num]=$sort;
+        $sort++;
+    }
+    $ret=[];
+    foreach ($strArr as $v){
+        if(isset($sortArr[$v]) &&!isset($ret[$v])){
+            $ret[$v]=$sortArr[$v];
+        }
+    }
+    return $ret;
 
 }
 
-$strArr = ["1", "3", "3", "3", "3", "4", "1", "5", "1"];
+$strArr = ["1",'4', "3", "3", "3", "3", "4", "1", "5", "1"];
 $r=sortK($strArr,3);
 print_r($r);
