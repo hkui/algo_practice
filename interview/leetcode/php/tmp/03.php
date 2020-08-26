@@ -4,6 +4,8 @@
  * User: 764432054@qq.com
  * Date: 2020/8/23
  * Time: 20:19
+ *
+ * 最长子串的长度
  */
 function lengthOfLongestSubstring($s){
     $len=strlen($s);
