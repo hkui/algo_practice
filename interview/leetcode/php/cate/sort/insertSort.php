@@ -2,35 +2,51 @@
 /**
  * Created by PhpStorm.
  * User: 764432054@qq.com
- * Date: 2020/6/5
- * Time: 23:03
+ * Date: 2020/8/26
+ * Time: 22:43
  */
+
 function insertSort(&$arr)
 {
     $len = count($arr);
-    $sortedLastIndex = 0;
-    //开始遍历无序区间，往有序里倒腾,注意边界判断
-    for ($i = $sortedLastIndex + 1; $i <= $len - 1; $i++) {
-        //要插入的值小于有序的最大值
-        if ($arr[$i] < $arr[$sortedLastIndex]) {
-            $tmp = $arr[$i];
-            $arr[$i] = $arr[$sortedLastIndex];
-            $j = $i - 1;
-            //向左移动
-            while ($j > 0 && $tmp < $arr[$j-1]) {
-                $arr[$j] = $arr[$j-1];
+    for ($i = 1; $i < $len; $i++) {
+        $j = $i - 1;
+        //处理[0,j+1]这个数组,现在已知[0,j]是有序的，需要把j+1放到正确的位置即可
+        while ($j >= 0) {
+            if ($arr[$j + 1] < $arr[$j]) {
+                $tmp = $arr[$j];
+                $arr[$j] = $arr[$j + 1];
+                $arr[$j + 1] = $tmp;
                 $j--;
+            } else {
+                break;
             }
-            $arr[$j]=$tmp;
-
         }
-        $sortedLastIndex++;
-
     }
 }
-$arr=[4,2,5,1,6,3,0,9];
 
-insertSort($arr);
+function insertSort1(&$arr)
+{
+    $len = count($arr);
+    for ($i = 1; $i < $len; $i++) {
+        //i位置的元素挖出来
+        $tmpi = $arr[$i];
+        $j = $i - 1;
+        while ($j >= 0) {
+            if ($arr[$j] > $tmpi) {
+                //j处的元素后挪
+                $arr[$j + 1] = $arr[$j];
+                $j--;
+            } else {
+                break;
+            }
+        }
+        $arr[$j + 1] = $tmpi;
+    }
+}
 
+$arr = [4, 2, 5, 1, 6, 3];
+
+
+insertSort1($arr);
 print_r($arr);
-
