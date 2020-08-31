@@ -21,3 +21,10 @@ func TestInsertSort1(t  *testing.T)  {
 	sort.InsertSort1(arr)
 	fmt.Println(arr)
 }
+
+func TestQuickSort(t *testing.T)  {
+	arr:=[]int{10,2,6,5,1,3}
+	sort.QuickSort(arr,0,len(arr)-1)
+
+	fmt.Println(arr)
+}
