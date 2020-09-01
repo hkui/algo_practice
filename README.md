@@ -5,14 +5,14 @@ Success belongs to the persevering!
 
 编号|php  (interview/leetcode/php/)|go （interview/leetcode/）|c
 ------|-------|------|------
-001.两数之和|001.两数之和.php | algo/001.twoSum.go |                  |
+001.两数之和|001.两数之和.php | algo/001.twoSum.go |   -
 002.两数相加|02.php |-|-
-003. 无重复字符的最长子串|03.无重复字符的最长子串.php|algo/003.lengthOfLongestSubstring.go|-|-
-004. 寻找两个正序数组的中位数|04.php |-|-
-005. 最长回文子串|05.php |-|-
-006. Z 字形变换|06.php |-|-
+003.无重复字符的最长子串|03.无重复字符的最长子串.php|algo/003.lengthOfLongestSubstring.go|-
+004.寻找两个正序数组的中位数|04.php |-|-
+005.最长回文子串|05.php |-|-
+006.Z 字形变换|06.php |-|-
 007.整数反转|07.php |-|-
-008. 字符串转换整数 (atoi)|08.php |-|-
+008.字符串转换整数 (atoi)|08.php |-|-
 009.回文数|09.php |-|-
 010.正则表达式匹配|10.php |-|-
 
