@@ -25,7 +25,7 @@ class Solution {
             for($j=$i+1;$j<=$len;$j++){
                 $testLen=$j-$i+1;
                 $testStr=substr($s,$i,$testLen);
-                if( $testLen>$max && $this->isPalindromic($testStr) ){
+                if( $testLen>$max && $this->_isPalindromic($testStr) ){
                     $resstr=$testStr;
                     $max=$testLen;
                 }

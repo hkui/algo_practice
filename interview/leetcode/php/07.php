@@ -1,4 +1,5 @@
 <?php
+//整数反转
 function reverse($x) {
 	$max=pow(2,31);
 	$min=-pow(2,31);

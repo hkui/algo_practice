@@ -1,6 +1,27 @@
 ### 数据结构和算法练习      
 Success belongs to the persevering! 
 
+#### leetcode
+
+编号|php  (interview/leetcode/php/)|go （interview/leetcode/）|c
+------|-------|------|------
+001.两数之和|001.两数之和.php | algo/001.twoSum.go                   |
+002.两数相加|02.php ||
+003. 无重复字符的最长子串|03.无重复字符的最长子串.php |algo/003.lengthOfLongestSubstring.go|
+004. 寻找两个正序数组的中位数|04.php ||
+005. 最长回文子串|05.php ||
+006. Z 字形变换|06.php ||
+007.整数反转|07.php ||
+008. 字符串转换整数 (atoi)|08.php ||
+009.回文数|09.php ||
+010.正则表达式匹配|10.php ||
+
+
+
+
+
+
+
 ### C
 ##### 链表
 [LRU单链表实现](https://github.com/hkui/algo_practice/blob/master/md/c/linklist/%E5%8D%95%E9%93%BE%E8%A1%A8LRU.md)   
@@ -31,8 +52,8 @@ Success belongs to the persevering!
  ##### 堆
  [堆基本操作，几种形式的堆化，堆排序](https://github.com/hkui/algo_practice/blob/master/md/04.%E5%A0%86%E6%A0%88/%E5%A0%86%E5%9F%BA%E6%9C%AC.md)    
  [动态数据流求top k,动态数据流求中位数](https://github.com/hkui/algo_practice/blob/master/md/04.%E5%A0%86%E6%A0%88/%E5%A0%86%E5%AE%9E%E6%88%98.md)
- 
- 
+
+
  ##### 二分查找
  [基本二分查找](https://github.com/hkui/algo_practice/blob/master/md/03.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/%E5%9F%BA%E6%9C%AC%E4%BA%8C%E6%9C%AC%E6%9F%A5%E6%89%BE.md)  
  [变形二分查找](https://github.com/hkui/algo_practice/blob/master/md/03.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/%E5%8F%98%E5%BD%A2%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md)
