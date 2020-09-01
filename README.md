@@ -3,7 +3,7 @@ Success belongs to the persevering!
 
 #### leetcode
 
-编号|php  (interview/leetcode/php/)|go （interview/leetcode/）|c
+编号|php  (leetcode/php/)|go （leetcode/go）|c
 ------|-------|------|------
 001.两数之和|001.两数之和.php | algo/001.twoSum.go |   -
 002.两数相加|02.php |-|-
