@@ -5,9 +5,9 @@ Success belongs to the persevering!
 
 编号|php  (leetcode/php)|go （leetcode/go/algo）|c
 ------|-------|------|------
-001.两数之和|001.两数之和.php | algo/001.twoSum.go |   -
+001.两数之和|001.两数之和.php | 001.twoSum.go |   -
 002.两数相加|02.php |02.go|-
-003.无重复字符的最长子串|03.无重复字符的最长子串.php|algo/003.lengthOfLongestSubstring.go|-
+003.无重复字符的最长子串|03.无重复字符的最长子串.php|003.lengthOfLongestSubstring.go|-
 004.寻找两个正序数组的中位数|04.php |-|-
 005.最长回文子串|05.php |-|-
 006.Z 字形变换|06.php |-|-
