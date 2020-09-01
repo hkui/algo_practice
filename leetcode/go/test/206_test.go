@@ -9,18 +9,12 @@ import (
 func TestReverseList(t *testing.T)  {
 	arr:=[]int{1,2,3,4,5}
 	head:=algo.CreateNodeList(arr)
-	ShowLists(head)
+	algo.PrintNode(head)
 
 	fmt.Println()
 
 	r:=algo.ReverseList(head)
 
-	ShowLists(r)
+	algo.PrintNode(r)
 }
 
-func ShowLists(node *algo.ListNode)  {
-	for node!=nil{
-		fmt.Println(node.Val)
-		node=node.Next
-	}
-}

@@ -1,5 +1,11 @@
 package algo
 
+import "fmt"
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 //根据数组创建1个单链表
 func CreateNodeList(arr []int)(*ListNode){
 	head:=&ListNode{}
@@ -12,7 +18,13 @@ func CreateNodeList(arr []int)(*ListNode){
 		cur=cur.Next
 
 	}
-	return head
+	return head.Next
+}
+func PrintNode(node *ListNode)  {
+	for node!=nil{
+		fmt.Println(node.Val)
+		node=node.Next
+	}
 }
 
 func SwapIntArr(arr []int,i int,j int)  {

@@ -46,7 +46,7 @@ class Solution
                 $tmp = $tmp->next;
             }
         }
-        //l1与l2一样长 且有进位
+        //比l1与l2都长 且有进位
         if($low>0){
             $tmp->next=new ListNode($low);
         }

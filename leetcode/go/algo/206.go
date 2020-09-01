@@ -4,10 +4,7 @@ import (
 	"reflect"
 )
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+
 //单链表反转
 func ReverseList(head *ListNode) *ListNode {
 	cur:=head
