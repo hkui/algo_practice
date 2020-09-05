@@ -43,12 +43,12 @@ func expandAroundCenter(s string, i int, j int) int {
 
 func LongestPalindromeForce(s string) string {
 	slen := len(s)
-	if slen<2{
+	if slen < 2 {
 		return s
 	}
 
 	start := 0
-	maxLen :=1 //注意起始值
+	maxLen := 1 //注意起始值
 
 	for i := 0; i < slen; i++ {
 		for j := i + 1; j < slen; j++ {
@@ -73,4 +73,42 @@ func isPalindrome(s string, i, j int) bool {
 		j--
 	}
 	return true
+}
+
+//--动态规划写法
+
+func LongestPalindromeDp(s string) string {
+	slen := len(s)
+	if slen < 2 {
+		return s
+	}
+	start := 0
+	maxLen := 1 //注意起始值
+	dp := make(map[int]map[int]bool)
+
+	for i := 0; i < slen; i++ {
+		dp[i] = map[int]bool{i: true}
+	}
+	for j := 1; j < slen; j++ {
+		for i := 0; i < j; i++ {
+			if s[i:i+1] != s[j:j+1] {
+				dp[i][j] = false
+			} else {
+				//考察i+1到j-1长度
+				//j-1-(i+1)-1<0
+				if j-i < 3 {
+					dp[i][j] = true
+				} else {
+					dp[i][j] = dp[i+1][j-1]
+					//注意填表顺序
+				}
+			}
+			if dp[i][j] && j-i+1 > maxLen {
+				start = i
+				maxLen = j - i + 1
+			}
+
+		}
+	}
+	return s[start : start+maxLen]
 }
