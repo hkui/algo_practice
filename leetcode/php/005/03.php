@@ -57,8 +57,6 @@ class Solution
         }
         return substr($s,$begin,$maxLen);
     }
-
-
 }
 $s = new Solution();
 
