@@ -28,6 +28,7 @@ func LongestPalindrome(s string) string {
 
 }
 
+//中心扩展方法
 func expandAroundCenter(s string, i int, j int) int {
 	slen := len(s)
 	for i >= 0 && j < slen && s[i] == s[j] {
@@ -35,4 +36,41 @@ func expandAroundCenter(s string, i int, j int) int {
 		j++;
 	}
 	return j - i - 1;
+}
+
+//-----------------------------------------------------
+//-暴力破解法 枚举所有的子串 判断长度和回文
+
+func LongestPalindromeForce(s string) string {
+	slen := len(s)
+	if slen<2{
+		return s
+	}
+
+	start := 0
+	maxLen :=1 //注意起始值
+
+	for i := 0; i < slen; i++ {
+		for j := i + 1; j < slen; j++ {
+			testLen := j - i + 1
+			if testLen > maxLen && isPalindrome(s, i, j) {
+				maxLen = testLen
+				start = i
+
+			}
+		}
+	}
+
+	return s[start : maxLen+start]
+}
+
+func isPalindrome(s string, i, j int) bool {
+	for i < j {
+		if s[i:i+1] != s[j:j+1] {
+			return false;
+		}
+		i++
+		j--
+	}
+	return true
 }
