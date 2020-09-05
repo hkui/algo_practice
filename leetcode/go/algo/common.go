@@ -32,3 +32,15 @@ func SwapIntArr(arr []int,i int,j int)  {
 	arr[i]=arr[j]
 	arr[j]=tmp
 }
+func max(a,b int) int {
+	if a>b{
+		return a
+	}
+	return b
+}
+func min(a,b int) int {
+	if a>b{
+		return b
+	}
+	return a
+}
