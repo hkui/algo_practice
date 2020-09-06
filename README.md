@@ -46,7 +46,7 @@ Success belongs to the persevering!
 039.组合总和  |  ||
 040.组合总和 II  | 040.combinationSum2.php ||
 041.缺失的第一个正数  | 041.php ||
-042.接雨水  |  ||
+042.接雨水  | 042.php ||
 043.字符串相乘  |  ||
 044.通配符匹配  |  ||
 045.跳跃游戏 II  |  ||
