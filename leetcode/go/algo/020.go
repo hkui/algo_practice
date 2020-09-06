@@ -1,10 +1,8 @@
 package algo
 
-import (
-	"container/list"
-)
+import "container/list"
 
-func Algo20_isValid(s string) bool  {
+func IsValid(s string) bool  {
 	dct:=map[string]string{
 		")":"(",
 		"]":"[",
