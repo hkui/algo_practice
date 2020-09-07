@@ -14,6 +14,7 @@ class Solution {
      */
     function longestValidParentheses($s) {
         $s=ltrim($s,')');
+        $s=rtrim($s,'(');
 
         $len=strlen($s);
         $queue=[];
@@ -41,7 +42,7 @@ class Solution {
                array_push($queue,$str);
             }
         }
-        print_r($maxArr);
+
         if(empty($maxArr)){
             return 0;
         }
@@ -56,6 +57,8 @@ class Solution {
 $so=new Solution();
 
 $test=[
+    '(()',
+    ')()())',
 //    '(())()',
 //    '()()()',
 //    '(()',
@@ -78,7 +81,7 @@ foreach ($test as $s){
     $s=preg_replace('#\s+#','',$s);
 
     $r=$so->longestValidParentheses($s);
-    print_r($r);
+    echo ($r);
     echo PHP_EOL;
 }
 
