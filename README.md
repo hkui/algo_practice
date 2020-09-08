@@ -6,7 +6,7 @@ Success belongs to the persevering!
 编号|php  (leetcode/php)|go （leetcode/go/algo）|c
 ------|-------|------|------
 001.两数之和|001.php | 001.go |   -
-002.两数相加|02.php |02.go|-
+002.两数相加|002.php |002.go|-
 003.无重复字符的最长子串|03.无重复字符的最长子串.php|003.lengthOfLongestSubstring.go|-
 004.寻找两个正序数组的中位数|04.php |-|-
 005.最长回文子串|05 |005.go|-
