@@ -9,6 +9,7 @@ import (
 func TestLengthOfLongestSubstring(t *testing.T)  {
 
 	tests:=[]string{
+		" ",
 		"abcabcbb",
 		"bbbbb",
 		"pwwkew",
@@ -17,7 +18,7 @@ func TestLengthOfLongestSubstring(t *testing.T)  {
 
 	}
 	for _,s:=range tests{
-		res:=algo.LengthOfLongestSubstring(s)
+		res:=algo.LengthOfLongestSubstring1(s)
 		fmt.Println(res)
 
 
