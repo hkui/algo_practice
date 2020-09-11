@@ -26,7 +26,23 @@ function removeElement(&$nums, $val) {
 
 }
 
+function removeElement1(&$nums, $val) {
+    $len=count($nums);
+
+    for($i=0;$i<$len;){
+        if($nums[$i]==$val){
+            $nums[$i]=$nums[$len-1];
+            $len--;
+        }else{
+            $i++;
+        }
+    }
+    return $len;
+
+}
+
+
 $nums = [0,1,2,2,3,0,4,2];
 $val = 2;
-echo removeElement($nums,$val);
+echo removeElement1($nums,$val);
 
