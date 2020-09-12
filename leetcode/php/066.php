@@ -12,24 +12,13 @@
  */
 function plusOne($digits) {
     $len=count($digits);
-    $low=0;
+    $low=1;
     for($i=$len-1;$i>=0;$i--){
-        if($i==$len-1){
-            if($digits[$i]+1>9){
-                $digits[$i]=($digits[$i]+1)%10;
-                $low=1;
-            }else{
-                $digits[$i]=$digits[$i]+1;
-                $low=0;
-            }
+        $digits[$i]=($digits[$i]+$low)%10;
+        if($digits[$i]!=0){
+            return $digits;
         }else{
-            if($digits[$i]+$low>9){
-                $digits[$i]=($digits[$i]+$low)%10;
-                $low=1;
-            }else{
-                $digits[$i]=$digits[$i]+$low;
-                $low=0;
-            }
+            $low=1;
         }
 
     }
@@ -40,5 +29,6 @@ function plusOne($digits) {
 }
 
 $digits=[9,9,9];
+//$digits=[1,2,3];
 $r=plusOne($digits);
 print_r($r);
