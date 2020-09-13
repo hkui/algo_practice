@@ -7,28 +7,37 @@
  * 趴楼梯
  */
 
-class Solution {
 
-    /**
-     * @param Integer $n
-     * @return Integer
-     */
-    function climbStairs($n) {
-        if($n<=2){
-            return $n;
-        }
-        $f0=1;
-        $f1=2;
-        for($i=2;$i<$n;$i++){
-            $fn=$f1+$f0;
-            $f0=$f1;
-            $f1=$fn;
-
-        }
-        return $fn;
+/**
+ * @param Integer $n
+ * @return Integer
+ */
+function climbStairs($n) {
+    if($n<=2){
+        return $n;
     }
+    $f0=1;
+    $f1=2;
+    for($i=2;$i<$n;$i++){
+        $fn=$f1+$f0;
+        $f0=$f1;
+        $f1=$fn;
+
+    }
+    return $fn;
 }
 
-$so=new Solution();
-$r=$so->climbStairs(10);
+/**
+ *  动态规划方式
+ */
+function climbStairsDp($n){
+    $dp[1]=1;
+    $dp[2]=2;
+    for($i=3;$i<=$n;$i++){
+        $dp[$i]=$dp[$i-1]+$dp[$i-2];
+    }
+    return $dp[$n];
+}
+
+$r=climbStairsDp(10);
 echo $r;
