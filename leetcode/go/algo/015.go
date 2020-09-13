@@ -5,9 +5,12 @@ import "sort"
 func ThreeSum(nums []int) [][]int {
 	var ret [][]int
 	length := len(nums)
+	if length<3{
+		return ret
+	}
 
 	sort.Ints(nums)
-	for i := 0; i < length; i++ {
+	for i := 0; i < length-2; i++ {
 		if nums[i] > 0 {
 			return ret
 		}
