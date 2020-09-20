@@ -10,6 +10,7 @@ class Solution
 {
 
     /**
+     * 暴力匹配
      * @param String $haystack
      * @param String $needle
      * @return Integer
@@ -36,6 +37,29 @@ class Solution
                     $i++;
                 }
 
+                $j = 0;
+            }
+
+        }
+        if ($j == $len2) {
+            return $i - $j;
+        }
+        return -1;
+    }
+    //暴力匹配
+    function strStr1($haystack, $needle)
+    {
+        $len1 = strlen($haystack);
+        $len2 = strlen($needle);
+        $i = 0;
+        $j = 0;
+
+        while ($i < $len1 && $j < $len2) {
+            if ($needle{$j} == $haystack{$i}) {
+                $i++;
+                $j++;
+            } else {
+                $i=$i-$j+1;
                 $j = 0;
             }
 
@@ -79,7 +103,6 @@ class Solution
                     }
                 }
 
-
                 if($k>=0){
                     $i=$nextStart-$k;
                 }else{
@@ -98,12 +121,12 @@ class Solution
 }
 
 $tests = [
-//    ["hello", "lo"],
+    ["hello", "lo"],
     ["mississippi", "issipi"],
-//    ["aaaaa","bba"],
+    ["aaaaa","bba"],
 ];
 $so = new Solution();
 foreach ($tests as $t) {
-    echo $so->sunday($t[0], $t[1]) . PHP_EOL;
+    echo $so->strStr1($t[0], $t[1]) . PHP_EOL;
 }
 
