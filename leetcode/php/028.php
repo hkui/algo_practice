@@ -28,13 +28,13 @@ class Solution
                 //提前退出条件
                 //abc
                 // bcd
-                if($len1-$i<$len2-$j){
+                if ($len1 - $i < $len2 - $j) {
                     return -1;
                 }
                 $i++;
                 $j++;
             } else {
-                $i=$i-$j+1;
+                $i = $i - $j + 1;
                 $j = 0;
             }
 
@@ -44,14 +44,17 @@ class Solution
         }
         return -1;
     }
+
     //Sunday 匹配
     public function sunday($haystack, $needle)
     {
-        $len1 = strlen($haystack);$len2 = strlen($needle);
-        if($len1<$len2 || ($len1==$len2 && $haystack!=$needle) ){
+        $len1 = strlen($haystack);
+        $len2 = strlen($needle);
+        if ($len1 < $len2 || ($len1 == $len2 && $haystack != $needle)) {
             return -1;
         }
-        $i = 0;$j = 0;
+        $i = 0;
+        $j = 0;
         while ($i < $len1 && $j < $len2) {
             if ($needle{$j} == $haystack{$i}) {
                 if ($j == 0) {
@@ -60,27 +63,27 @@ class Solution
                 $i++;
                 $j++;
             } else {
-                $j=0;
+                $j = 0;
                 if (isset($beginIndex)) {
-                    $nextStart = $beginIndex+$len2;
+                    $nextStart = $beginIndex + $len2;
                     unset($beginIndex);
                 } else {
-                    $nextStart=$i+$len2;
+                    $nextStart = $i + $len2;
                 }
-                if($nextStart>$len1-1){
+                if ($nextStart > $len1 - 1) {
                     return -1;
                 }
                 //查看i处这个元素是否在模式串里,从后往前
-                for($k=$len2-1;$k>=0;$k--){
-                    if($haystack{$nextStart}==$needle{$k}){
+                for ($k = $len2 - 1; $k >= 0; $k--) {
+                    if ($haystack{$nextStart} == $needle{$k}) {
                         break;
                     }
                 }
 
-                if($k>=0){
-                    $i=$nextStart-$k;
-                }else{
-                    $i=$nextStart;
+                if ($k >= 0) {
+                    $i = $nextStart - $k;
+                } else {
+                    $i = $nextStart;
                 }
 
             }
