@@ -15,6 +15,7 @@ class Solution
      * @param String $needle
      * @return Integer
      */
+
     function strStr($haystack, $needle)
     {
         $len1 = strlen($haystack);
@@ -24,38 +25,12 @@ class Solution
 
         while ($i < $len1 && $j < $len2) {
             if ($needle{$j} == $haystack{$i}) {
-                if ($j == 0) {
-                    $beginIndex = $i;
+                //提前退出条件
+                //abc
+                // bcd
+                if($len1-$i<$len2-$j){
+                    return -1;
                 }
-                $i++;
-                $j++;
-            } else {
-                if (isset($beginIndex)) {
-                    $i = $beginIndex + 1;
-                    unset($beginIndex);
-                } else {
-                    $i++;
-                }
-
-                $j = 0;
-            }
-
-        }
-        if ($j == $len2) {
-            return $i - $j;
-        }
-        return -1;
-    }
-    //暴力匹配
-    function strStr1($haystack, $needle)
-    {
-        $len1 = strlen($haystack);
-        $len2 = strlen($needle);
-        $i = 0;
-        $j = 0;
-
-        while ($i < $len1 && $j < $len2) {
-            if ($needle{$j} == $haystack{$i}) {
                 $i++;
                 $j++;
             } else {
@@ -85,7 +60,6 @@ class Solution
                 $i++;
                 $j++;
             } else {
-
                 $j=0;
                 if (isset($beginIndex)) {
                     $nextStart = $beginIndex+$len2;
@@ -122,11 +96,11 @@ class Solution
 
 $tests = [
     ["hello", "lo"],
-    ["mississippi", "issipi"],
-    ["aaaaa","bba"],
+//    ["mississippi", "issipi"],
+//    ["aaaaa","bba"],
 ];
 $so = new Solution();
 foreach ($tests as $t) {
-    echo $so->strStr1($t[0], $t[1]) . PHP_EOL;
+    echo $so->sunday($t[0], $t[1]) . PHP_EOL;
 }
 
