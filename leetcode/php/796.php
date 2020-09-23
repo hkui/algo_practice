@@ -10,6 +10,7 @@
  * @param String $A
  * @param String $B
  * @return Boolean
+ * 方法1
  */
 function rotateString($A, $B) {
     $len=strlen($A);
