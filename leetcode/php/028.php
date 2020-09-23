@@ -25,7 +25,7 @@ class Solution
 
         while ($i < $len1 && $j < $len2) {
             if ($needle{$j} == $haystack{$i}) {
-                //提前退出条件
+                //提前退出条件 len2冒出l1了
                 //abc
                 // bcd
                 if ($len1 - $i < $len2 - $j) {
@@ -55,6 +55,7 @@ class Solution
         }
         $i = 0;
         $j = 0;
+        $beginIndex=-1;
         while ($i < $len1 && $j < $len2) {
             if ($needle{$j} == $haystack{$i}) {
                 if ($j == 0) {
@@ -64,9 +65,9 @@ class Solution
                 $j++;
             } else {
                 $j = 0;
-                if (isset($beginIndex)) {
+                if ($beginIndex>0) {
                     $nextStart = $beginIndex + $len2;
-                    unset($beginIndex);
+                    $beginIndex=-1;
                 } else {
                     $nextStart = $i + $len2;
                 }
@@ -79,7 +80,7 @@ class Solution
                         break;
                     }
                 }
-
+                //找到了
                 if ($k >= 0) {
                     $i = $nextStart - $k;
                 } else {
@@ -98,6 +99,7 @@ class Solution
 }
 
 $tests = [
+    ["mississippi", "pi"],
     ["hello", "lo"],
 //    ["mississippi", "issipi"],
 //    ["aaaaa","bba"],

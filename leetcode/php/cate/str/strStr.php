@@ -64,14 +64,54 @@ class strStr
     //Sunday 匹配
     public static function sunday($haystack, $needle)
     {
+        $len1=strlen($haystack);
+        $len2=strlen($needle);
+        $i=0;$j=0;
+        $beginIndex=-1;//开始相同的位置
+        while($i<$len1 && $j<$len2){
+            if($haystack{$i}==$needle{$j}){
+                if($j==0){
+                    $beginIndex=$i;
+                }
+                $i++;
+                $j++;
+            }else{
+                $j=0;
+                if($beginIndex>=0){
+                    $nextStart=$beginIndex+$len2;
+                    $beginIndex=-1;
+                }else{
+                    $nextStart=$i+$len2;
+                }
+                if($nextStart>$len1-1){
+                    return -1;
+                }
+                $nextStartVal=$haystack{$nextStart};
 
+                for($k=$len2-1;$k>=0;$k--){
+                    if($nextStartVal==$needle{$k}){
+                        break;
+                    }
+                }
+                if($k>=0){
+                    $i=$nextStart-$k;
+                }else{
+                    $i=$nextStart;
+                }
+            }
+        }
+        if($j==$len2){
+            return $i-$j;
+        }
+        return -1;
     }
 }
 
 $tests = [
-    ["mississippi", "issip"]
+//    ["mississippi", "issip"],
+    ["mississippi", "pi"],
 ];
 foreach ($tests as $t) {
-    echo strStr::BF($t[0], $t[1]);
+    echo strStr::sunday($t[0], $t[1]);
 }
 
