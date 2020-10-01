@@ -40,8 +40,38 @@ class Solution
         }
 
     }
+    ####----------dfs版本--------
+
+    function permute1($nums)
+    {
+        $numsKv = [];
+        foreach ($nums as $v) {
+            $numsKv[$v] = true;
+        }
+        $this->dfs($numsKv,[],[]);
+
+        return $this->ret;
+    }
+
+    private function dfs($numsKv,$path,$used){
+        if(count($path)==count($numsKv)){
+            $this->ret[]=$path;
+            return ;
+        }
+        foreach ($numsKv as $num=>$v){
+            if(!empty($used[$num]))continue;
+            array_push($path,$num);
+            $used[$num]=true;
+            $this->dfs($numsKv,$path,$used);
+            $used[$num]=false;
+            array_pop($path);
+        }
+    }
+
+
 }
 
 $so = new Solution();
 $nums = [1, 2, 3];
-$r = $so->permute($nums);
+$r = $so->permute1($nums);
+print_r($r);

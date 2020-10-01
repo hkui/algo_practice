@@ -2,13 +2,12 @@ package algo
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 //全排列
 var ret46 [][]int
 
-func Permute(nums []int) [][]int {
+func Permute1(nums []int) [][]int {
 	//多个测试用例时必须初始化
 	ret46=[][]int{}
 
@@ -48,20 +47,19 @@ func tree46(num int, numsKv map[int]int, step []int) {
 
 var res46 [][]int
 
-func Permute1(nums []int) [][]int {
+func Permute(nums []int) [][]int {
 	used:=make(map[int]bool)
-	res46=[][]int{}
-	path:=make([]int,0)
-	dfs46(nums,0,used,path)
-	return res46
+	res46=make([][]int,0)
 
+	path:=make([]int,0)
+	dfs46(nums,used,path)
+	return res46
 }
-func dfs46(nums []int,depth int,used map[int]bool,path []int)  {
-	if len(nums)==depth {
-		fmt.Println(res46)
-		res46= append( res46,path)
-		fmt.Println(path,res46)
-		fmt.Println()
+func dfs46(nums []int,used map[int]bool,path []int)  {
+	if len(nums)==len(path) {
+		path1:=make([]int,len(path))
+		copy(path1,path)
+		res46= append( res46,path1)
 		return
 	}
 	for _,num:=range  nums{
@@ -70,8 +68,7 @@ func dfs46(nums []int,depth int,used map[int]bool,path []int)  {
 		}
 		path=append(path,num)
 		used[num]=true
-		dfs46(nums,depth+1,used,path)
-		fmt.Println(num,depth,"res46=",res46,"path=",path)
+		dfs46(nums,used,path)
 		used[num]=false
 		path=path[0:len(path)-1]
 	}

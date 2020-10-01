@@ -6,8 +6,11 @@ import (
 	"testing"
 )
 
-func Test46Permute(t *testing.T)  {
+var a []int
+var res [][]int
 
+
+func Test46Permute(t *testing.T)  {
 
 	tests:=[][]int{
 		//[]int{1,2,3},
@@ -17,11 +20,9 @@ func Test46Permute(t *testing.T)  {
 	}
 
 	for _,v:=range tests{
-		res:=algo.Permute1(v)
+		res:=algo.Permute(v)
 		fmt.Println(res)
 	}
-
-
 
 }
 
