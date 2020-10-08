@@ -11,6 +11,7 @@ func TestBubbleSort(t *testing.T)  {
 	res:=sort.BubbleSort(arr)
 	fmt.Println(res)
 }
+
 func TestInsertSort(t  *testing.T)  {
 	arr:=[]int{4,2,5,1,6,3}
 	sort.InsertSort(arr)
