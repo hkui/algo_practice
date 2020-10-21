@@ -52,8 +52,6 @@ class Tree
         $this->postOrder($root->right);
         $this->retPostorder[] = $root->val;
         return  $this->retPostorder;
-
-
     }
 }
 

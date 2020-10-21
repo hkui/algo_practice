@@ -34,16 +34,16 @@ function partition(&$arr,$p,$r){
 
 /**
  * @param $arr
- * @param $p 开始排序的起始位置(包括)
+ * @param $l 开始排序的起始位置(包括)
  * @param $r 开始排序的结束位置(包括)
  */
 
-function quickSort(&$arr,$p,$r){
-    if($p>=$r){
+function quickSort(&$arr,$l,$r){
+    if($l>=$r){
         return ;
     }
-    $i=partition1($arr,$p,$r);
-    quickSort($arr,$p,$i-1);
+    $i=partition1($arr,$l,$r);
+    quickSort($arr,$l,$i-1);
     quickSort($arr,$i+1,$r);
 }
 
