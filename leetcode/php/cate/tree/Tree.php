@@ -53,11 +53,62 @@ class Tree
         $this->retPostorder[] = $root->val;
         return  $this->retPostorder;
     }
+    //-------------stack方式---------------
+
+    //前序遍历 根左右 栈的方式
+    /**
+     * @param $root  TreeNode
+     */
+    public function preOrderStack($root){
+        $ret=[];
+        $stack=[$root];
+        while($stack){
+            $cur=array_pop($stack);
+            if(empty($cur)){
+                continue;
+            }
+            $ret[]=$cur->val;
+            array_push($stack,$cur->right);
+            array_push($stack,$cur->left);
+        }
+        return $ret;
+    }
+    /**
+     * 中序 左根右
+     * @param $root  TreeNode
+     */
+    public function inOrderStack($root){
+        $ret=[];
+        $cur=$root;
+        $stack=[];
+        while($cur ||!empty($stack)){
+            if($cur){
+                array_push($stack,$cur);
+                $cur=$cur->left;
+            }else{
+                $last=array_pop($stack);
+                $ret[]=$last->val;
+                $cur=$last->right;
+
+            }
+        }
+        return $ret;
+    }
+    /**
+     * @param $root  TreeNode
+     * 左右根
+     */
+    public function postOrderStack($root)
+    {
+
+    }
+
+
 }
 
 
-$tree = createTreesByArr([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+$tree = createTreesByArr([1, 2, 3, 4, 5, 6, 7]);
 
 $so=new Tree();
-$r=$so->postOrder($tree);
+$r=$so->inOrderStack($tree);
 print_r($r);
