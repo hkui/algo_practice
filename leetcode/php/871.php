@@ -15,6 +15,7 @@ class Solution
      * @param Integer $startFuel
      * @param Integer[][] $stations
      * @return Integer
+     * dp方式
      */
     function minRefuelStops($target, $startFuel, $stations)
     {
@@ -45,17 +46,46 @@ class Solution
         }
         return -1;
     }
+    //速度更快的大根堆方式
+    public function minRefuelStopsHeap($target, $startFuel, $stations){
+        $maxHeap=new SplMaxHeap();
+        $n=0;
+        $current=$startFuel; //当前油量
+        foreach ($stations as $v){
+            while($current<$v[0] && !$maxHeap->isEmpty()){
+                $current+=$maxHeap->extract();
+                $n++;
+            }
+            if($current<$v[0]){
+                return -1;
+            }
+            $maxHeap->insert($v[1]);
+        }
+        while($current<$target && !$maxHeap->isEmpty()){
+            $current+=$maxHeap->extract();
+            $n++;
+        }
+
+        if($current<$target){
+            return -1;
+        }
+        return $n;
+    }
+
 }
 
 error_reporting(0);
 $tests = [
 //    [ 1,  1,[]],
 //    [100,1,[[10,100]]],
-    [100, 10, [[10, 60], [20, 30], [30, 30], [60, 40]]],
+//    [100, 10, [[10, 60], [20, 30], [30, 30], [60, 40]]],
+    [1000,83,[[15,457],[156,194],[160,156],[230,314],[390,159],[621,20],[642,123],[679,301],[739,229],[751,174]]],
+        [100,50,[[25,25],[50,50]]]
 ];
 $so = new Solution();
+
 foreach ($tests as $t) {
-    $r = $so->minRefuelStops($t[0], $t[1], $t[2]);
+    $r = $so->minRefuelStopsHeap($t[0], $t[1], $t[2]);
     echo $r . PHP_EOL;
 }
 
