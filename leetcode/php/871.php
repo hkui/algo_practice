@@ -52,6 +52,7 @@ class Solution
         $n=0;
         $current=$startFuel; //当前油量
         foreach ($stations as $v){
+            //判断是否能达到要考察的站，到达不了就找之前路过的加油站最大的加油
             while($current<$v[0] && !$maxHeap->isEmpty()){
                 $current+=$maxHeap->extract();
                 $n++;
@@ -61,6 +62,7 @@ class Solution
             }
             $maxHeap->insert($v[1]);
         }
+        //能否到达目的地
         while($current<$target && !$maxHeap->isEmpty()){
             $current+=$maxHeap->extract();
             $n++;

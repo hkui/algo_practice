@@ -15,18 +15,18 @@ class Solution
         if ($len < 2) {
             return $s;
         }
-        $max=0;
+        $start=0;
+        $end=0;
         for($i=0;$i<$len-1;$i++){
             $len1=$this->expandAroundCenter($s,$i,$i);
             $len2=$this->expandAroundCenter($s,$i,$i+1);
-            $maxLen=max($len1,$len2);
-
-            if($maxLen>$max){
-                $start=$i-intval(($maxLen-1)/2);
-                $max=$maxLen;
+            $nowLen=max($len1,$len2);
+            if($nowLen>$end-$start+1){
+                $start=$i-intval(($nowLen-1)/2);
+                $end=$i+intval($nowLen/2);
             }
         }
-        return substr($s,$start,$max);
+        return substr($s,$start,($end-$start)+1);
 
     }
     function expandAroundCenter($s,$left,$right){
@@ -34,7 +34,6 @@ class Solution
         while($left>=0 && $right<$len && $s{$left}==$s{$right}){
                 $left--;
                 $right++;
-
         }
         return $right-$left-1;
     }

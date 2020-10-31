@@ -37,14 +37,11 @@ function addTwoNumbers($l1, $l2) {
     if($fromLow>0){
         $tmp->next=new ListNode($fromLow);
     }
-
     return $head;
 }
 $l1=createNodeList([1,3,6]);
 $l2=createNodeList([2,7,5]);
 
-print_r($l1);
-print_r($l2);
 print_r(addTwoNumbers($l1,$l2));
 
 
