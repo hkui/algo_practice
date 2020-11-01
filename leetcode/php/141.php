@@ -14,22 +14,19 @@ include './include/common.php';
  * @return Boolean
  */
 function hasCycle($head) {
-    if(empty($head) || empty($head->next)){
-        return false;
-    }
+    if(empty($head)) return false;
     $slow=$head;
     $quick=$head;
-    while ($slow &&$quick){
+    while($quick){
         $slow=$slow->next;
         $quick=$quick->next;
-        if(empty($quick->next)){
+        if(empty($quick)){
             return false;
         }
         $quick=$quick->next;
-        if($quick && $slow==$quick){
+        if($slow == $quick){
             return true;
         }
-
     }
     return false;
 }

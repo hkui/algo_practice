@@ -6,6 +6,10 @@
  * Time: 22:17
  */
 
+/**
+ * Class ListNode
+ * 单链表
+ */
 class ListNode
 {
     public $val = 0;
@@ -14,6 +18,18 @@ class ListNode
     function __construct($val)
     {
         $this->val = $val;
+    }
+}
+class DoubleLinkList{
+    public $key;
+    public $val;
+    public $prev;/*@var DoubleLinkList $prev */
+    public $next;/*@var DoubleLinkList $next */
+
+    public function __construct($key,$val)
+    {
+        $this->key=$key;
+        $this->val=$val;
     }
 }
 

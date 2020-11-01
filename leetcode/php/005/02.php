@@ -43,9 +43,9 @@ $s = new Solution();
 
 $tests = [
 //    'aba',
-    "cbbd"
+    "cbbd",
 //    'abbacab',
-//    'babad',
+    'babad',
 //    'ac'
 ];
 foreach ($tests as $str) {
