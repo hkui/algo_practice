@@ -2,3 +2,4 @@
 .idea
 *.out
 *_test.php
+*test_.go
