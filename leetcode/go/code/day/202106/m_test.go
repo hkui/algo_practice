@@ -8,6 +8,6 @@ import (
 func Test350( t *testing.T)  {
 	nums1:= []int{4,9,4,5}
 	nums2:= []int{9,4,9,8,4}
-	r:=intersect(nums1,nums2)
+	r:=intersectSorted(nums1,nums2)
 	fmt.Println(r)
 }
