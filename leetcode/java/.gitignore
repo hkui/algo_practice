@@ -2,5 +2,6 @@
 .idea
 *.iml
 *.out
+out
 *_test.php
 *test_.go
