@@ -11,8 +11,8 @@ class Solution {
 
         int []nums=new int[]{3,3};
         int target=6;
-       int []ret=twoSum(nums,target);
-        System.out.println(ret[0]);
+        int []ret=twoSum(nums,target);
+        System.out.println(Arrays.toString(ret));
 
     }
     public static int[] twoSum(int[] nums, int target) {
@@ -21,11 +21,12 @@ class Solution {
         int len=nums.length;
         for(int k=0;k<len;k++){
             int v=nums[k];
-            tb.put(target-v,k);
             if(tb.containsKey(v)){
                 ret[0]=tb.get(v);
                 ret[1]=k;
+                return ret;
             }
+            tb.put(target-v,k);
         }
         return ret;
     }
