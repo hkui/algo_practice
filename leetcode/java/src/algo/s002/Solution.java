@@ -10,7 +10,15 @@ public class Solution {
 
         int fromPrev=0;
         do{
-            int num=l1.val+l2.val+fromPrev;
+            int num=fromPrev;
+            if(l1!=null){
+                num+=l1.val;
+                l1=l1.next;
+            }
+            if(l2!=null){
+                num+=l2.val;
+                l2=l2.next;
+            }
             if(num>9){
                 fromPrev=1;
             }else {
@@ -19,34 +27,7 @@ public class Solution {
             ListNode node=new ListNode(num%10);
             cur.next=node;
             cur=node;
-            l1=l1.next;
-            l2=l2.next;
-        }while (l1!=null && l2!=null);
-
-        while (l1!=null){
-            int num=l1.val+fromPrev;
-            if(num>9){
-                fromPrev=1;
-            }else {
-                fromPrev=0;
-            }
-            ListNode node=new ListNode(num%10);
-            cur.next=node;
-            cur=node;
-            l1=l1.next;
-        }
-        while (l2!=null){
-            int num=l2.val+fromPrev;
-            if(num>9){
-                fromPrev=1;
-            }else {
-                fromPrev=0;
-            }
-            ListNode node=new ListNode(num%10);
-            cur.next=node;
-            cur=node;
-            l2=l2.next;
-        }
+        }while (l1!=null || l2!=null);
 
         if(fromPrev>0){
             ListNode last=new ListNode(1);
