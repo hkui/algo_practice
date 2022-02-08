@@ -1,6 +1,5 @@
 <?php
 
-//待改良,使用快慢指针 todo
 class Solution {
 
     /**
@@ -34,11 +33,35 @@ class Solution {
         $len=$len-$repreatNum;
         $repreatNum=0;
     }
+
+    /**
+     * @author huangkui
+     * DateTime: 2022/2/8 13:33
+     * @param $nums
+     * @return int
+     * 快慢指针
+     */
+    function slowQuickPointer(&$nums) {
+        $len=count($nums);
+        if($len==0){
+            return $len;
+        }
+        $i=0;
+        $j=1;
+        for(;$j<$len;$j++){
+            if($nums[$i]!=$nums[$j]){
+                $nums[$i+1]=$nums[$j];
+                $i++;
+            }
+        }
+        return $i+1;
+    }
+
 }
 $nums = [1,1,1,2];
 $nums=[0,0,1,1,1,2,2,3,3,4];
 //$nums=[1,1];
 $s=new Solution();
-$len=$s->removeDuplicates($nums);
+$len=$s->slowQuickPointer($nums);
 var_dump($len);
 print_r($nums);
