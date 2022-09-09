@@ -4,3 +4,7 @@
 *.out
 *_test.php
 *test_.go
+leetcode/php/0test/
+leetcode/go/0test/
+leetcode/java/src/algo/test/
+leetcode/java/out
