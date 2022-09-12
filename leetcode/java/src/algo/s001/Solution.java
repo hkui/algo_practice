@@ -16,7 +16,7 @@ class Solution {
 
     }
     public static int[] twoSum(int[] nums, int target) {
-        Hashtable<Integer,Integer> tb=new Hashtable<>();
+        HashMap<Integer,Integer> tb=new HashMap<>();
         int[]ret=new int[2];
         int len=nums.length;
         for(int k=0;k<len;k++){
