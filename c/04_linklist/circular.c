@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <unistd.h>
 
 typedef struct stu{
 	char name[10];
@@ -37,8 +37,6 @@ void * printStu(stuNode * node ){
 		node=node->next;
 		sleep(1);
 	}
-	
-	
 }
 
 int main(int argc, char const *argv[])
