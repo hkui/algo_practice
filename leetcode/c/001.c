@@ -1,9 +1,7 @@
-//
-// Created by huangkui on 2021/3/31.
-//
-#include "io_utils.h"
 
-#include "../lib/uthash.h"
+#include "fun/io_utils.h"
+
+#include "lib/uthash.h"
 
 
 struct hashTable {
@@ -46,5 +44,13 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
     }
     *returnSize = 0;
     return NULL;
+}
+
+int main(){
+    int nums[]={1,2,3,4,5,6};
+    int rSize=2;
+    int *ret=twoSum(nums,6,7,&rSize);
+    PRINT_INT_ARRAY(ret,rSize);
+    return 0;
 }
 
