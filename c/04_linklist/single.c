@@ -31,7 +31,7 @@ void * changeStu(stuNode *node,int n){
 		i++;
 	}
 	if(node!=NULL){
-		puts("输入要修改的值");
+        printf("输入要第%d个修改的值\n",n);
 		scanf("%s", &node->name);
 	}else{
 		puts("节点不存在");

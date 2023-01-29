@@ -1,8 +1,13 @@
+.PHONY:clean show
+SRC=$(wildcard *.c)
+TARGETS=$(patsubst %.c,%,$(SRC))
+OBJS=$(patsubst %.c,%.o,$(SRC))
 
-circular:circular.o
-hoop:hoop.o
-single:single.o
-findMiddle:findMiddle.o
-single_list_lru:single_list_lru.c
+$(TARGET):$(OBJS)
+
+show:
+	echo $(SRC)
+	echo $(OBJS)
+	echo $(TARGETS)
 clean:
-	$(RM) *.o circular hoop single findMiddle single_list_lru
+	$(RM) *.o $(TARGETS)
