@@ -18,11 +18,11 @@ func Test001TwoSum(t *testing.T)  {
 }
 func Test002AddTwoNumbers(t *testing.T)  {
 	var l1,l2 *algo.ListNode
-	l1=algo.CreateNodeList([]int{2,4,3})
-	l2=algo.CreateNodeList([]int{5,6,4})
+	l1=algo.CreateNodeListByArr([]int{2,4,3})
+	l2=algo.CreateNodeListByArr([]int{5,6,4})
 
-	l1=algo.CreateNodeList([]int{1})
-	l2=algo.CreateNodeList([]int{9,9})
+	l1=algo.CreateNodeListByArr([]int{1})
+	l2=algo.CreateNodeListByArr([]int{9,9})
 
 	res:=algo.AddTwoNumbers(l1,l2)
 	algo.PrintNode(res)
@@ -92,7 +92,7 @@ func Test015ThreeSum(t *testing.T)  {
 }
 func Test019RemoveNthFromEnd(t *testing.T)  {
 
-	head:=algo.CreateNodeList([]int{1,2,3,4,5,6})
+	head:=algo.CreateNodeListByArr([]int{1,2,3,4,5,6})
 
 	res:=algo.RemoveNthFromEnd(head,4)
 	algo.PrintNode(res)
@@ -110,7 +110,7 @@ func Test020IsValid(t *testing.T)  {
 }
 func Test021MergeTwoLists(t *testing.T)  {
 
-	res:=algo.MergeTwoLists(algo.CreateNodeList([]int{1,3,5}),algo.CreateNodeList([]int{2,4}))
+	res:=algo.MergeTwoLists(algo.CreateNodeListByArr([]int{1,3,5}),algo.CreateNodeListByArr([]int{2,4}))
 	algo.PrintNode(res)
 }
 func Test027RemoveElement(t *testing.T)  {

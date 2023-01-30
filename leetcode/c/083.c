@@ -15,7 +15,8 @@ struct ListNode *createSingleListNode(int count, ...) {
 
     head = (struct ListNode *) malloc(sizeof(struct ListNode));
     cur = head;
-    for (int i = 0; i < count; i++) {
+    int i;
+    for (i = 0; i < count; i++) {
         node = (struct ListNode *) malloc(sizeof(struct ListNode));
         cur->val = va_arg(nums, int);
         if (i == count - 1) {

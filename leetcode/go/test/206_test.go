@@ -8,7 +8,7 @@ import (
 
 func TestReverseList(t *testing.T)  {
 	arr:=[]int{1,2,3,4,5}
-	head:=algo.CreateNodeList(arr)
+	head:=algo.CreateNodeListByArr(arr)
 	algo.PrintNode(head)
 
 	fmt.Println()
