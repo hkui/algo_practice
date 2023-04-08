@@ -323,7 +323,5 @@ class nodeList
             }
         }
     }
-
-
 }
 

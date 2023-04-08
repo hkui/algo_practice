@@ -1,0 +1,19 @@
+<?php
+$arr=[1,2,3];
+include "./../singleNode.php";
+$k=3;
+$node=nodeList::createNode($arr);
+print_r($node);
+$cur=$node->head->next;
+$pre=$node->head;
+$pre->next=null;
+while($cur){
+    $next=$cur->next;
+    $cur->next=$pre;
+    $pre=$cur;
+    if(empty($next)){
+        break;
+    }
+    $cur=$next;
+}
+print_r($cur);
