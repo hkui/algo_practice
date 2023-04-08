@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 
-countSort(int arr[],int size){
+void countSort(int arr[],int size){
     int max=arr[0];
     int i;
     //找出最大值
@@ -28,7 +28,7 @@ countSort(int arr[],int size){
     }
 }
 
-countSort1(int arr[],int size){
+void countSort1(int arr[],int size){
     int max=arr[0];
     int i;
     //找出最大值
@@ -65,9 +65,6 @@ countSort1(int arr[],int size){
     for(i=0;i<size;i++){
         arr[i]=r[i];
     }
-
-
-
 
 }
 

@@ -15,12 +15,13 @@
         }
     }
 }*/
+#include "../utils.h"
 
 void bubbleSort(int *arr,int size){
     if (size <=1) return;
     int i,j;
 
-    for(i=0;i<size;i++){
+    for(i=0;i<size-1;i++){
         int flag=0;
         for(j=0;j<size-i-1;j++){
             if(arr[j]>arr[j+1]){
@@ -36,13 +37,9 @@ void bubbleSort(int *arr,int size){
 }
 int main(){
     int a[]={5,1,6,2,3,4,0,9,13,10,7,9};
+    PRINT_INT_ARR(a);
     bubbleSort(a,12);
-    int i=0;
-    for(;i<12;i++){
-        printf("%d ",a[i]);
-    }
-    printf("\n ");
+    PRINT_INT_ARR(a);
     return 0;
-
 }
 

@@ -2,6 +2,7 @@
 .idea
 *.iml
 *.out
+*.exe
 *_test.php
 *test_.go
 leetcode/php/0test/
