@@ -1,5 +1,4 @@
-#include <stdio.h>
-
+#include "../utils.h"
 /**
  *
  * @param arr
@@ -32,15 +31,10 @@ void quickSort(int arr[],int p,int r){
 }
 int  main(){
     int arr[]={4,2,5,1,6,3};
-
+    PRINT_INT_ARR(arr);
     int len= sizeof(arr)/ sizeof(int);
     quickSort(arr,0,len-1);
-    int i=0;
-    for(;i<len;i++){
-        printf("%d ",arr[i]);
-    }
-    printf("\n");
-
+    PRINT_INT_ARR(arr);
     return 0;
 }
 

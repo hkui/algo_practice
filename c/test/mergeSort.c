@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "../utils.h"
 
 void merge(int arr[],int m,int n){
     int len=n-m+1;
@@ -49,16 +49,9 @@ void mergeSort(int arr[],int m,int n){
 int main(){
     int arr[]={3,1,2,0,9,7,-1,5,-10,100,99,8};
     int len= sizeof(arr)/ sizeof(int);
+    PRINT_INT_ARR(arr);
     mergeSort(arr,0,len-1);
-
-    int i=0;
-
-    for(;i<len;i++){
-        printf("%d ",arr[i]);
-
-
-    }
-    printf("\n");
+    PRINT_INT_ARR(arr);
 
     return 0;
 }

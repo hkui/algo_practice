@@ -2,7 +2,6 @@
 // Created by hk on 2023-04-08.
 //
 
-#include <stdio.h>
 #include "../utils.h"
 void swapElement(int arr[],int a,int b){
     int tmp=arr[a];

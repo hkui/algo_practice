@@ -22,4 +22,10 @@ for(;i<len;i++){           \
 }                         \
  printf("%s=[%s]\n",#arr,dst);         \
 } while(0)
+
+#define PRINT(a) \
+do{                 \
+printf(#a"=%d\n",a);\
+}while(0);
+
 #endif //ALGO_PRACTICE_UTILS_H
