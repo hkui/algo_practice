@@ -29,7 +29,7 @@ class Trie {
     /**
      * Inserts a word into the trie.
      * @param String $word
-     * @return NULL
+     * @return void
      */
     function insert($word) {
         $node=$this->root;
@@ -50,17 +50,18 @@ class Trie {
      * @param String $word
      * @return Boolean
      */
-    function search($word) {
-        $node=$this->root;
-        $len=strlen($word);
-        for($i=0;$i<$len;$i++){
-            $w=$word[$i];
-            if(!isset($node->children[$w])){
+    function search($word)
+    {
+        $node = $this->root;
+        $len = strlen($word);
+        for ($i = 0; $i < $len; $i++) {
+            $w = $word[$i];
+            if (!isset($node->children[$w])) {
                 return false;
             }
-            $node=$node->children[$w];
+            $node = $node->children[$w];
         }
-        if($node->isEnd){
+        if ($node->isEnd) {
             return true;
         }
         return false;
